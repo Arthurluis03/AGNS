@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #070b16;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 210px;
+  min-height: 100vh;
+  background: #090e1c;
+  padding: 14px 9px 18px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #111827;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 8px;
+  margin-bottom: 27px;
+}
+
+.logo-icon {
+  width: 31px;
+  height: 31px;
+  color: #6257ff;
+}
+
+.logo-text h1 {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.logo-text p {
+  color: #7d88a8;
+  font-size: 8px;
+  margin-top: 2px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.menu a {
+  height: 39px;
+  padding: 0 11px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #98a3c2;
+  text-decoration: none;
+  border-radius: 7px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.menu a:hover {
+  background: #151b30;
+  color: #fff;
+}
+
+.menu a.active {
+  background: linear-gradient(90deg, #4038b9, #3e39aa);
+  color: #fff;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.profile-area {
+  margin-top: auto;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 7px;
+  margin-bottom: 17px;
+}
+
+.profile-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #171d35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aeb8dc;
+}
+
+.profile-info strong {
+  display: block;
+  font-size: 11px;
+  color: #d9dded;
+  margin-bottom: 3px;
+}
+
+.profile-info span {
+  display: block;
+  color: #7783a5;
+  font-size: 9px;
+}
+
+.logout {
+  height: 31px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #8c97b7;
+  text-decoration: none;
+  font-size: 11px;
+  border-radius: 6px;
+}
+
+.logout:hover {
+  color: #fff;
+  background: #151b30;
+}
+
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.car-logo {
+  fill: currentColor;
+  stroke: none;
+}
