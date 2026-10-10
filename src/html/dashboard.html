@@ -1,81 +1,300 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoControl</title>
-    <link rel="stylesheet" href="/src/css/stye.css">
-    <script src="/src/script/dashboard.js" defer></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<body>
+    <title>AutoControl</title>
+
+    <link rel="stylesheet" href="/src/css/stye.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/src/script/dashboard.js" defer></script>
+  </head>
+
+  <body>
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+    >
+      <svg viewBox="0 0 24 24" class="hamburger-icon">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
 
     <aside class="sidebar">
+      <div class="logo">
+        <svg class="logo-icon car-logo" viewBox="0 0 24 24">
+          <path
+            d="M5.2 11.2 6.7 6.8A2 2 0 0 1 8.6 5.5h6.8a2 2 0 0 1 1.9 1.3l1.5 4.4A2.8 2.8 0 0 1 21 14v4.2a1.3 1.3 0 0 1-1.3 1.3h-1.4a1.3 1.3 0 0 1-1.3-1.3V17H7v1.2a1.3 1.3 0 0 1-1.3 1.3H4.3A1.3 1.3 0 0 1 3 18.2V14a2.8 2.8 0 0 1 2.2-2.8ZM7.3 11h9.4l-1.1-3.2H8.4L7.3 11ZM6.5 14.5a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6Zm11 0a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6Z"
+          />
+        </svg>
 
-        <div class="logo">
-            <img src="../css/img/carV.png" alt="Carro" class="logo-icon">
+        <div class="logo-text">
+          <h1>A G N S</h1>
+          <p>Controle de Entrada e Saída de Veículos</p>
+        </div>
+      </div>
 
-            <div class="logo-text">
-                <h1>A G N S</h1>
-                <p>Controle de Entrada e Saída de Veículos</p>
-            </div>
+      <nav class="menu">
+        <a href="#" class="active" data-menu="inicio">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path
+              d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z"
+            />
+          </svg>
+          <span>Início</span>
+        </a>
+
+        <a href="#" data-menu="veiculos">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path
+              d="M5 16.5h14M6 16.5l-1 2.5h14l-1-2.5M7 16.5l1.2-7h7.6l1.2 7M9 9.5 10 6h4l1 3.5M8 12h8"
+            />
+            <circle cx="7" cy="19.5" r="1" />
+            <circle cx="17" cy="19.5" r="1" />
+          </svg>
+          <span>Veículos</span>
+        </a>
+
+        <a href="#" data-menu="entradas">
+          <svg class="icon" viewBox="0 0 24 24">
+            <rect x="4" y="3" width="14" height="18" rx="2" />
+            <path d="M9 12h9m0 0-3-3m3 3-3 3" />
+          </svg>
+          <span>Entradas</span>
+        </a>
+
+        <a href="#" data-menu="saidas">
+          <svg class="icon" viewBox="0 0 24 24">
+            <rect x="4" y="3" width="14" height="18" rx="2" />
+            <path d="M15 12H6m0 0 3-3m-3 3 3 3" />
+          </svg>
+          <span>Saídas</span>
+        </a>
+
+        <a href="#" data-menu="relatorios">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M5 4h9l5 5v11H5z" />
+            <path d="M14 4v5h5M8 13h8M8 16h6" />
+          </svg>
+          <span>Relatórios</span>
+        </a>
+
+        <a href="#" data-menu="configuracoes">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" />
+            <path
+              d="m19 13.5 1.2 1-.9 1.6-1.5-.5a7.5 7.5 0 0 1-1.5 1l-.2 1.6h-1.9l-.5-1.5a7.5 7.5 0 0 1-1.8 0l-.7 1.5h-1.8l-.2-1.6a7.5 7.5 0 0 1-1.5-1l-1.5.5-.9-1.6 1.2-1a7.1 7.1 0 0 1 0-2l-1.2-1 .9-1.6 1.5.5a7.5 7.5 0 0 1 1.5-1l.2-1.6h1.8l.7 1.5a7.5 7.5 0 0 1 1.8 0l.5-1.5h1.9l.2 1.6a7.5 7.5 0 0 1 1.5 1l1.5-.5.9 1.6-1.2 1a7.1 7.1 0 0 1 0 2Z"
+            />
+          </svg>
+          <span>Configuração</span>
+        </a>
+      </nav>
+
+      <div class="profile-area">
+        <div class="profile">
+          <div class="profile-icon">
+            <svg class="icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="3" />
+              <path d="M5 20a7 7 0 0 1 14 0" />
+            </svg>
+          </div>
+
+          <div class="profile-info">
+            <strong>Administrador</strong>
+            <span>admin@autocontrol.com</span>
+          </div>
         </div>
 
-        <nav class="menu">
-
-            <a href="#" class="active">
-                <img src="../css/img/homeV.png" alt="Início" class="icon">
-                <span>Início</span>
-            </a>
-
-            <a href="#">
-                <img src="../css/img/carV2.png" alt="Veículos" class="icon" id="veiculo_style">
-                <span>Veículos</span>
-            </a>
-
-            <a href="#">
-                <img src="../css/img/enterV.png" alt="Entradas" class="icon" id="entrada_style">
-                <span>Entradas</span>
-            </a>
-
-            <a href="#">
-                <img src="../css/img/sairV.png" alt="Saídas" class="icon">
-                <span>Saídas</span>
-            </a>
-
-            <a href="#">
-                <img src="../css/img/fileV.png" alt="Relatórios" class="icon">
-                <span>Relatórios</span>
-            </a>
-
-            <a href="#">
-                <img src="../css/img/settingV.png" alt="Configurações" class="icon">
-                <span>Configurações</span>
-            </a>
-
-        </nav>
-
-        <div class="profile-area">
-
-            <div class="profile">
-                <div class="profile-icon">
-                    <img src="../css/img/userV.png" alt="Perfil" class="icon">
-                </div>
-
-                <div class="profile-info">
-                    <strong>Administrador</strong>
-                    <span>admin@autocontrol.com</span>
-                </div>
-            </div>
-
-            <a href="#" class="logout">
-                <img src="../css/img/logoutV.png" alt="Sair" class="icon">
-                <span id="sair_button">Sair</span>
-            </a>
-
-        </div>
-
+        <a href="#" class="logout" id="sair_button">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4" />
+            <path d="M14 8l4 4-4 4M18 12H9" />
+          </svg>
+          <span>Sair</span>
+        </a>
+      </div>
     </aside>
+    <!--  menu do ladin -->
+    <div class="h1_admin">
+      <h1 id="user_h1">Olá, Administrador</h1>
+      <p>Aqui está um resumo do movimneto de veiculos no estacionamento</p>
+    </div>
+    <main>
+      <!-- CARDS PRINCIPAIS -->
+      <div class="cards_main">
+        <!-- TOTAL DE VEÍCULOS -->
+        <div class="card veiculo">
+          <div class="card-header">
+            <div class="icon-box">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M5 11l1.5-5h11L19 11" />
+                <path d="M3 13l2-2h14l2 2v5h-3v-2H6v2H3z" />
+                <circle cx="7" cy="14" r="1" />
+                <circle cx="17" cy="14" r="1" />
+              </svg>
+            </div>
+            <p>Total de Veículos</p>
+          </div>
 
-</body>
+          <h1 id="Totalcarros">248</h1>
+
+          <div class="card-info positivo">
+            <span>↑ 12%</span>
+            <p>em relação ao dia anterior</p>
+          </div>
+        </div>
+
+        <!-- ENTRADAS -->
+        <div class="card entrada">
+          <div class="card-header">
+            <div class="icon-box">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M13 4h5a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-5" />
+                <path d="M3 12h11" />
+                <path d="M10 8l4 4-4 4" />
+              </svg>
+            </div>
+            <p>Entradas</p>
+          </div>
+
+          <h1 id="EntradasVeiculos">138</h1>
+
+          <div class="card-info positivo">
+            <span>↑ 12%</span>
+            <p>em relação ao dia anterior</p>
+          </div>
+        </div>
+
+        <!-- SAÍDAS -->
+        <div class="card saida">
+          <div class="card-header">
+            <div class="icon-box">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5" />
+                <path d="M21 12H10" />
+                <path d="M14 8l-4 4 4 4" />
+              </svg>
+            </div>
+            <p>Saídas</p>
+          </div>
+
+          <h1 id="SaidasVeiculos">110</h1>
+
+          <div class="card-info positivo">
+            <span>↑ 12%</span>
+            <p>em relação ao dia anterior</p>
+          </div>
+        </div>
+
+        <!-- VAGAS DISPONÍVEIS -->
+        <div class="card vagas">
+          <div class="card-header">
+            <div class="icon-box">
+              <svg class="icon" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M9 17V7h4a3 3 0 0 1 0 6H9" />
+              </svg>
+            </div>
+            <p>Vagas Disponíveis</p>
+          </div>
+
+          <h1 id="Vagasdisponivel">52</h1>
+          <p class="vagas-texto">de 250 vagas</p>
+
+          <!-- Fazer barrinha dps -->
+
+          <!--  -->
+        </div>
+      </div>
+
+      <section>
+        <!-- MOVIMENTAÇÃO DE VEÍCULOS -->
+        <div class="cards veiculo_Section">
+          <h1>Movimentação de Veículos</h1>
+
+          <div class="legenda-movimento">
+            <p>
+              <span class="ponto entrada"></span>
+              Entradas
+            </p>
+
+            <p>
+              <span class="ponto saida"></span>
+              Saídas
+            </p>
+          </div>
+
+          <div id="grafico_Linha">
+            <canvas id="Grafico_Movimento"></canvas>
+          </div>
+        </div>
+
+        <!-- STATUS ATUAL -->
+        <div class="cards status">
+          <h1>Status atual</h1>
+
+          <div class="grafico-status-container">
+            <div id="grafico_pizza">
+              <canvas id="Grafico_Pizza"></canvas>
+            </div>
+
+            <div class="centro-grafico">
+              <svg
+                class="icone-carro-status"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 11l1.5-5h11L19 11" />
+                <path d="M3 13l2-2h14l2 2v5h-3v-2H6v2H3z" />
+                <circle cx="7.5" cy="13.5" r="1" />
+                <circle cx="16.5" cy="13.5" r="1" />
+              </svg>
+
+              <span class="total-veiculos">248</span>
+            </div>
+          </div>
+
+          <div class="legenda-status">
+            <p>
+              <span class="ponto dentro"></span>
+              <span>Dentro</span>
+              <strong>110</strong>
+            </p>
+
+            <p>
+              <span class="ponto fora"></span>
+              <span>Fora</span>
+              <strong>138</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="cards video">
+          <h1>Entrada / Saída em tempo real</h1>
+
+          <img
+            class="imagem-veiculo"
+            src="../css/img/Rectangle 4.png"
+            alt="Veículo na entrada do estacionamento"
+          />
+
+          <p id="status_Entrada_Saida">
+            <span class="ponto entrada"></span>
+            Entrada liberada
+          </p>
+
+          <p id="status_placa">Placa: SAA-3B24</p>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
