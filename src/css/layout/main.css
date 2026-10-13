@@ -1,4 +1,3 @@
-/* CONTEÚDO PRINCIPAL */
 main {
     margin-left: 180px;
     width: calc(100% - 180px);
@@ -9,7 +8,6 @@ main {
     color: #f5f7fa;
 }
 
-/* CARDS */
 .cards_main {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -119,8 +117,7 @@ main {
     color: #8b98ad;
     font-size: 10px;
 }
-/* BARRA DE VAGAS
-
+/*  
 teste barrinha 
 
 
@@ -139,9 +136,8 @@ teste barrinha
     height: 100%;
     background: #28c99a;
     border-radius: 10px;
-} */
-
-/* TELAS MÉDIAS */
+} 
+*/
 @media (max-width: 1100px) {
     .cards_main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
