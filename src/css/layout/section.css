@@ -18,9 +18,10 @@ section {
     box-sizing: border-box;
 }
 
-.veiculo_Section {
-    width: 640px;
-}
+/* .veiculo_Section {
+    max-width: 760px;
+    
+} */
 
 .veiculo {
     grid-column: 1;
