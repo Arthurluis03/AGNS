@@ -6,6 +6,91 @@ const ctxLinha = document.getElementById("Grafico_Movimento");
 const modal = document.getElementById("modalVeiculo");
 const formulario = document.getElementById("formVeiculo");
 
+//  button do menu 
+const inicio_button = document.getElementById("inicio_menu")
+const veiculo_button = document.getElementById("veiculo_menu")
+const entrada_button = document.getElementById("entrada_menu")
+const saida_button = document.getElementById("saida_menu")
+const relatorios_button = document.getElementById("relatorios_menu")
+const config_button = document.getElementById("config_menu")
+// conteudos dos main's
+
+const main_dashboard = document.getElementById('dashboard')
+const main_veiculo = document.getElementById("veiculo_main")
+const main_entrada = document.getElementById("entrada_main")
+const main_saida = document.getElementById("saida_main")
+const main_relatorios = document.getElementById("relatorios_main")
+const main_config = document.getElementById("config_main")
+
+inicio_button.addEventListener("click", (e) =>{
+  e.preventDefault()
+  main_dashboard.style.display= "block";  
+  main_veiculo.style.display = "none"
+  main_entrada.style.display = "none"
+  main_saida.style.display = "none"
+  main_relatorios.style.display = "none"
+  main_config.style.display = "none"
+
+})
+veiculo_button.addEventListener('click', (e)=>{
+  e.preventDefault()
+
+  main_dashboard.style.display= "none";  
+  main_veiculo.style.display = "block"
+  main_entrada.style.display = "none"
+  main_saida.style.display = "none"
+  main_relatorios.style.display = "none"
+  main_config.style.display = "none"
+
+})
+
+entrada_button.addEventListener('click', (e)=>{
+  e.preventDefault()
+
+  main_dashboard.style.display= "none";  
+  main_veiculo.style.display = "none"
+  main_entrada.style.display = "block"
+  main_saida.style.display = "none"
+  main_relatorios.style.display = "none"
+  main_config.style.display = "none"
+
+})
+saida_button.addEventListener('click', (e)=>{
+  e.preventDefault()
+
+  main_dashboard.style.display= "none";  
+  main_veiculo.style.display = "none"
+  main_entrada.style.display = "none"
+  main_saida.style.display = "block"
+  main_relatorios.style.display = "none"
+  main_config.style.display = "none"
+
+})
+relatorios_button.addEventListener('click', (e)=>{
+  e.preventDefault()
+
+  main_dashboard.style.display= "none";  
+  main_veiculo.style.display = "none"
+  main_entrada.style.display = "none"
+  main_saida.style.display = "none"
+  main_relatorios.style.display = "block"
+  main_config.style.display = "none"
+
+})
+
+config_button.addEventListener('click', (e)=>{
+  e.preventDefault()
+
+  main_dashboard.style.display= "none";  
+  main_veiculo.style.display = "none"
+  main_entrada.style.display = "none"
+  main_saida.style.display = "none"
+  main_relatorios.style.display = "none"
+  main_config.style.display = "block"
+
+})
+
+
 button.addEventListener("click", () => {
   window.location.href = "/index.html";
 });
@@ -18,6 +103,7 @@ if (menuSalvo) {
   if (itemSalvo) {
     menuItems.forEach((item) => item.classList.remove("active"));
     itemSalvo.classList.add("active");
+
   }
 }
 
@@ -171,6 +257,7 @@ new Chart(ctxLinha, {
   options: {
     responsive: true,
     maintainAspectRatio: false,
+    
   },
 });
 
@@ -198,3 +285,7 @@ new Chart(ctxPizza, {
     },
   },
 });
+
+
+
+     
