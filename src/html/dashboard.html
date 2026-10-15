@@ -288,6 +288,225 @@
           <p id="status_placa">Placa: SAA-3B24</p>
         </div>
       </section>
+      <section class="dashboard-section">
+        <div class="cards veiculo_Section">
+          <h1>Movimentação de Veículos</h1>
+
+          <div class="legenda-movimento">
+            <p><span class="ponto entrada"></span> Entradas</p>
+            <p><span class="ponto saida"></span> Saídas</p>
+          </div>
+
+          <div id="grafico_Linha">
+            <canvas id="Grafico_Movimento"></canvas>
+          </div>
+        </div>
+
+        <div class="cards status">
+          <h1>Status atual</h1>
+
+          <div class="grafico-status-container">
+            <div id="grafico_pizza">
+              <canvas id="Grafico_Pizza"></canvas>
+            </div>
+
+            <div class="centro-grafico">
+              <svg
+                class="icone-carro-status"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 11l1.5-5h11L19 11" />
+                <path d="M3 13l2-2h14l2 2v5h-3v-2H6v2H3z" />
+                <circle cx="7.5" cy="13.5" r="1" />
+                <circle cx="16.5" cy="13.5" r="1" />
+              </svg>
+
+              <span class="total-veiculos">248</span>
+            </div>
+          </div>
+
+          <div class="legenda-status">
+            <p>
+              <span class="ponto dentro"></span>
+              <span>Dentro</span>
+              <strong>110</strong>
+            </p>
+
+            <p>
+              <span class="ponto fora"></span>
+              <span>Fora</span>
+              <strong>138</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="cards video">
+          <h1>Entrada / Saída em tempo real</h1>
+
+          <img
+            class="imagem-veiculo"
+            src="../css/img/Rectangle 4.png"
+            alt="Veículo na entrada do estacionamento"
+          />
+
+          <p id="status_Entrada_Saida">
+            <span class="ponto entrada"></span>
+            Entrada liberada
+          </p>
+
+          <p id="status_placa">Placa: SAA-3B24</p>
+        </div>
+      </section>
+
+      <section class="historico-grid">
+        <div class="cards historico-card">
+          <div class="historico-header">
+            <div class="historico-titulo">
+              <svg class="historico-icone entrada-icone" viewBox="0 0 24 24">
+                <path d="M13 4h5a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-5" />
+                <path d="M3 12h11m-4-4 4 4-4 4" />
+              </svg>
+
+              <h1>Últimas Entradas</h1>
+            </div>
+
+            <button type="button" onclick="abrirModal('entrada')">
+              Adicionar entrada
+            </button>
+          </div>
+
+          <div class="historico-tabela">
+            <div class="historico-linha historico-colunas">
+              <span>Horário</span>
+              <span>Placa</span>
+              <span>Tipo</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:41</span>
+              <span>SAA-3B24</span>
+              <span class="tipo-veiculo entrada-tipo">Carro</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:37</span>
+              <span>QXV-8D76</span>
+              <span class="tipo-veiculo entrada-tipo">Carro</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:32</span>
+              <span>RTP-2C10</span>
+              <span class="tipo-veiculo entrada-tipo">Carro</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:28</span>
+              <span>JKN-5F09</span>
+              <span class="tipo-veiculo entrada-tipo">Moto</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:21</span>
+              <span>OIT-2B72</span>
+              <span class="tipo-veiculo entrada-tipo">Carro</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards historico-card">
+          <div class="historico-header">
+            <div class="historico-titulo">
+              <svg class="historico-icone saida-icone" viewBox="0 0 24 24">
+                <path d="M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5" />
+                <path d="M21 12H10m4-4-4 4 4 4" />
+              </svg>
+
+              <h1>Últimas Saídas</h1>
+            </div>
+
+            <button type="button" onclick="abrirModal('saida')">
+              Adicionar saída
+            </button>
+          </div>
+
+          <div class="historico-tabela">
+            <div class="historico-linha historico-colunas">
+              <span>Horário</span>
+              <span>Placa</span>
+              <span>Tipo</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:41</span>
+              <span>BVT-1A23</span>
+              <span class="tipo-veiculo saida-tipo">Carro</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:37</span>
+              <span>KLM-9E87</span>
+              <span class="tipo-veiculo saida-tipo">Moto</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:32</span>
+              <span>MNO-4C56</span>
+              <span class="tipo-veiculo saida-tipo">Carro</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:28</span>
+              <span>RTY-6H72</span>
+              <span class="tipo-veiculo saida-tipo">Carro</span>
+            </div>
+
+            <div class="historico-linha">
+              <span class="historico-horario">09:21</span>
+              <span>GHS-2D34</span>
+              <span class="tipo-veiculo saida-tipo">Moto</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="modalVeiculo" hidden>
+        <div>
+          <h2 id="tituloModal">Adicionar movimentação</h2>
+
+          <form id="formVeiculo">
+            <label for="horarioVeiculo">Horário</label>
+            <input type="time" id="horarioVeiculo" required />
+
+            <label for="placaVeiculo">Placa</label>
+            <input
+              type="text"
+              id="placaVeiculo"
+              placeholder="ABC-1234"
+              maxlength="8"
+              required
+            />
+
+            <label for="tipoVeiculo">Tipo de veículo</label>
+            <select id="tipoVeiculo" required>
+              <option value="">Selecione</option>
+              <option value="Carro">Carro</option>
+              <option value="Moto">Moto</option>
+              <option value="Caminhão">Caminhão</option>
+            </select>
+
+            <button type="submit">Adicionar</button>
+            <button type="button" onclick="fecharModal()">Cancelar</button>
+          </form>
+        </div>
+      </div>
     </main>
   </body>
 </html>

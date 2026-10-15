@@ -123,3 +123,81 @@ new Chart(ctxPizza, {
         maintainAspectRatio: false
     }
 });
+
+
+
+
+const modal = document.getElementById("modalVeiculo");
+const formulario = document.getElementById("formVeiculo");
+
+let movimentacao = "entrada";
+
+function abrirModal(tipo) {
+    movimentacao = tipo;
+
+    if (tipo === "entrada") {
+        document.getElementById("tituloModal").textContent = "Adicionar entrada";
+    } else {
+        document.getElementById("tituloModal").textContent = "Adicionar saída";
+    }
+
+    formulario.reset();
+    modal.hidden = false;
+}
+
+function fecharModal() {
+    modal.hidden = true;
+}
+
+formulario.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let horario = document.getElementById("horarioVeiculo").value;
+    let placa = document.getElementById("placaVeiculo").value.toUpperCase();
+    let tipo = document.getElementById("tipoVeiculo").value;
+
+    if (horario === "" || placa === "" || tipo === "") {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    let historico;
+
+    if (movimentacao === "entrada") {
+        historico = document.querySelector(
+            ".historico-grid .historico-card:first-child .historico-tabela"
+        );
+    } else {
+        historico = document.querySelector(
+            ".historico-grid .historico-card:last-child .historico-tabela"
+        );
+    }
+
+    let linha = document.createElement("div");
+    linha.className = "historico-linha";
+
+    let horarioTexto = document.createElement("span");
+    horarioTexto.textContent = horario;
+
+    let placaTexto = document.createElement("span");
+    placaTexto.textContent = placa;
+
+    let tipoTexto = document.createElement("span");
+    tipoTexto.textContent = tipo;
+    tipoTexto.className = "tipo-veiculo";
+
+    if (movimentacao === "entrada") {
+        tipoTexto.classList.add("entrada-tipo");
+    } else {
+        tipoTexto.classList.add("saida-tipo");
+    }
+
+    linha.appendChild(horarioTexto);
+    linha.appendChild(placaTexto);
+    linha.appendChild(tipoTexto);
+
+    let cabecalho = historico.querySelector(".historico-colunas");
+    cabecalho.insertAdjacentElement("afterend", linha);
+
+    fecharModal();
+});
