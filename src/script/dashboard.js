@@ -79,18 +79,18 @@ document.addEventListener("click", (event) => {
 new Chart(ctxLinha, {
     type: "line",
     data: {
-        labels: ["08h", "10h", "12h", "14h", "16h", "18h"],
+        labels: ["02hr", "04hr", "06hr", "08h", "10h", "12h", "14h", "16h", "18h", "20hr", "22hr", "24hr"],
         datasets: [
             {
                 label: "Entradas",
-                data: [12, 19, 15, 25, 20, 30],
+                data: [ 4, 6, 8, 12, 19, 15, 39, 25, 20, 30, 50, 109],
                 borderColor: "#16a77b",
                 backgroundColor: "#16a77b",
-                tension: 0.4
+                tension: 0.4,
             },
             {
                 label: "Saídas",
-                data: [8, 14, 12, 18, 22, 25],
+                data: [8, 20, 14, 12, 18, 22, 25, 10, 37, 23, 2, 50],
                 borderColor: "#ed3861",
                 backgroundColor: "#ed3861",
                 tension: 0.4
@@ -100,6 +100,7 @@ new Chart(ctxLinha, {
     options: {
         responsive: true,
         maintainAspectRatio: false
+         
     }
 });
 
@@ -120,7 +121,12 @@ new Chart(ctxPizza, {
     },
     options: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        straked: {
+            y: {
+                backgroundColor: "White"
+            }
+        }
     }
 });
 

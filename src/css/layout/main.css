@@ -17,18 +17,17 @@ main {
 }
 .h1_admin{
     margin-top: 20px;
-
     margin-left: 230px;
-    
 }
 
 .card {
     min-width: 0;
-    padding: 12px;
+    padding: 10px;
     background: #0b1119;
     border: 1px solid #18212d;
     border-radius: 6px;
     box-sizing: border-box;
+    /* border: 3px solid red; */
 }
 
 .card-header {
@@ -117,8 +116,8 @@ main {
     color: #8b98ad;
     font-size: 10px;
 }
-/*  
-teste barrinha 
+ 
+
 
 
 
@@ -137,14 +136,14 @@ teste barrinha
     background: #28c99a;
     border-radius: 10px;
 } 
-*/
+
 @media (max-width: 1100px) {
     .cards_main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* CELULARES */
+
 @media (max-width: 600px) {
     main {
         margin-left: 0;
@@ -156,4 +155,9 @@ teste barrinha
         grid-template-columns: 1fr;
         gap: 12px;
     }
+  .h1_admin{
+    margin-top: 20px;
+    margin-left: 230px;
+  }
+    
 }
