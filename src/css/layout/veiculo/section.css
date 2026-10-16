@@ -1,0 +1,28 @@
+:root{
+    --cor_azul: #1E2835
+    --cor_button_laranja: #E35A0B
+    --cor_placeholder: #4D556F
+
+}
+
+
+.input_cadastro_veiculo{
+    background-color:  var(--cor_azul);
+    max-width: 600px;
+    width: 100%;
+    margin-left: 50px;
+    height: 50px;
+    max-height: 50px;
+    border: 5px;
+    
+}
+.input_cadastro_veiculo::placeholder{
+    color: white;
+}
+.header_section{
+    width: 1500px;
+    max-width: 1500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

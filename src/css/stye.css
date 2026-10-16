@@ -1,7 +1,7 @@
-@import url("./layout/dashboard.css");
-@import url("./layout/main.css");
-@import url("./layout/section.css");
-
+@import url("./layout/inicio/dashboard.css");
+@import url("./layout/inicio/main.css");
+@import url("./layout/inicio/section.css");
+@import url("./layout/veiculo/section.css");
 
 #dashboard{
     display: none;
