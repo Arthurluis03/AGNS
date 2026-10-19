@@ -22,7 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     background: #080b0e;
-    border-right: 1px solid #1b1e22;
+    border-right: 1px solid #1b1e21;
     z-index: 1000;
 }
 

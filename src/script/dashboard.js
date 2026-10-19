@@ -240,7 +240,7 @@ new Chart(ctxLinha, {
     datasets: [
       {
         label: "Entradas",
-        data: [4, 6, 8, 12, 19, 15, 39, 25, 20, 30, 50, 109],
+        data: [4, 6, 8, 12, 19, 15, 39, 25, 20, 30, 50, 10],
         borderColor: "#16a77b",
         backgroundColor: "#16a77b",
         tension: 0.4,
@@ -266,7 +266,7 @@ const ctxPizza = document.getElementById("Grafico_Pizza");
 new Chart(ctxPizza, {
   type: "doughnut",
   data: {
-    labels: ["Dentro", "Fora"],
+    labels: ["Livre", "Ocup."],
     datasets: [
       {
         data: [138, 110],

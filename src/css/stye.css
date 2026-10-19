@@ -3,7 +3,6 @@
 @import url("./layout/inicio/section.css");
 @import url("./layout/veiculo/section.css");
 @import url("./layout/inicio/responsive.css");
+@import url("./layout/index/main.css");
 
-#dashboard{
-    display: none;
-}
+

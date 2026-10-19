@@ -7,7 +7,7 @@
 
 
 .input_cadastro_veiculo{
-    background-color:  var(--cor_azul);
+    background-color: "white";
     max-width: 600px;
     width: 100%;
     margin-left: 50px;

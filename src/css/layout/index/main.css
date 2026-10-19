@@ -1,0 +1,116 @@
+.modal {
+
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    max-height: 800px;
+    min-height: 700px;
+    margin-left: 30px;
+
+}
+/* input: input_login */
+/* botão login */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: black;
+    color: #ffffff;
+}
+
+
+
+/* width heigth 
+    color, backgroundcolor
+*/
+
+
+.input_login{
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #0D1218;
+    color: #667585;
+    border: none;
+     padding: 22px;
+     margin-bottom: 10px;
+}
+
+.input_login:hover{
+    border: 2px solid #667585;
+
+}
+
+.input_login::placeholder{
+    color: #667585;
+}
+.login{
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #E35A0B;
+  color: #ffffff;
+  margin-left: 55px;
+}
+.login
+
+
+
+
+
+
+.logo {
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 30px;
+    margin-right: 0px;
+    width: 400px;
+
+}
+
+.car-logo {
+    color: #ff5900;
+    fill: currentColor;
+    stroke: none;
+}
+.logo-icon {
+    max-width: 60px;
+    flex-shrink: 0;
+}
+.location{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.logo-text {
+    min-width: 0;
+}
+
+.logo-text h1 {
+    font-size: 20px;
+    color: white;
+    line-height: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.logo-text h1 strong{
+    color: #ff5900;
+}
+
+.logo-text p {
+    color: #687384;
+    font-size: 13px;
+
+}
+
+
+
