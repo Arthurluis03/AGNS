@@ -413,22 +413,129 @@
 
 
 
-  <!--  VEICULOS -->
 
 
 
-  <main id="veiculo_main" style="display: none;">
-    <h1 class="h1_txt_veiculo">Veículo</h1>
-    <section>
-      <div class="header_section">
-        <input class="input_cadastro_veiculo" type="text" placeholder=" Buscar por placa... ">
-        <a href="" id="" class="button_cadastro_veiculo">
-          
-          <span> Cadastrar veiculo </span>
-        </a>
-      </div>
+ 
+<!-- VEÍCULOS -->
+
+<main id="veiculo_main" style="display: none;">
+
+    <h1 class="h1_txt_veiculo">Veículos</h1>
+
+    <section class="veiculo-section">
+
+        <div class="header_section">
+            <input
+                class="input_cadastro_veiculo"
+                type="text"
+                id="buscar_veiculo"
+                placeholder="Buscar por placa..."
+            >
+            <a href="#" id="abrir_cadastro_veiculo" class="button_cadastro_veiculo">
+                + Cadastrar Veículo
+            </a>
+        </div>
+        <div class="veiculo-tabela-container">
+            <table class="veiculo-tabela">
+                <thead>
+                    <tr>
+                        <th>Horário</th>
+                        <th>Placa</th>
+                        <th>Tipo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="lista_veiculos">
+
+                    <tr>
+                        <td>08:15</td>
+                        <td class="placa-veiculo">ABC1D23</td>
+                        <td>Carro</td>
+                        <td>
+                            <span class="status-veiculo dentro">Dentro</span>
+                        </td>
+                        <td>
+                            <div class="acoes-veiculo">
+                                <button class="botao-editar" type="button" title="Editar">
+                                    Editar
+                                </button>
+                                <button class="botao-excluir" type="button" title="Excluir">
+                                    Excluir
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>09:30</td>
+                        <td class="placa-veiculo">DEF4G56</td>
+                        <td>Moto</td>
+                        <td>
+                            <span class="status-veiculo fora">Fora</span>
+                        </td>
+                        <td>
+                            <div class="acoes-veiculo">
+                                <button class="botao-editar" type="button" title="Editar">
+                                    Editar
+                                </button>
+                                <button class="botao-excluir" type="button" title="Excluir">
+                                    Excluir
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10:05</td>
+                        <td class="placa-veiculo">GHI7J89</td>
+                        <td>Carro</td>
+                        <td>
+                            <span class="status-veiculo dentro">Dentro</span>
+                        </td>
+                        <td>
+                            <div class="acoes-veiculo">
+                                <button class="botao-editar" type="button" title="Editar">
+                                    Editar
+                                </button>
+                                <button class="botao-excluir" type="button" title="Excluir">
+                                    Excluir
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11:20</td>
+                        <td class="placa-veiculo">JKL2M34</td>
+                        <td>Caminhão</td>
+                        <td>
+                            <span class="status-veiculo fora">Fora</span>
+                        </td>
+                        <td>
+                            <div class="acoes-veiculo">
+                                <button class="botao-editar" type="button" title="Editar">Editar</button>
+                                <button class="botao-excluir" type="button" title="Excluir">Excluir</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="veiculos_vazio" class="veiculos-vazio" style="display: none;">
+                Nenhum veículo encontrado.
+            </p>
+        </div>
+        <div class="paginacao-veiculos">
+            <span id="texto_paginacao">Mostrando 1–4 de 4 veículos</span>
+            <div class="botoes-paginacao">
+                <button type="button" id="pagina_anterior" disabled>Anterior</button>
+                <button type="button" id="pagina_atual" class="pagina-ativa">1</button>
+                <button type="button" id="pagina_proxima" disabled>Próxima</button>
+            </div>
+        </div>
     </section>
-  </main>
+</main>
+
 
   <!--  ENTRADAS  -->
 

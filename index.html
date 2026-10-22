@@ -1,42 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>AutoControl</title>
-
-    <link rel="stylesheet" href="./src/css/layout/index/main.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoControl | Login</title>
+  <link rel="stylesheet" href="/src/css/layout/index/main.css">
 </head>
-
 <body>
-
-    <main class="main-modal" id="login-user">
-
+  <main class="login-page">
+    <section class="login-panel">
+      <header class="brand">
+        <img class="brand-icon" src="src/css/img/logo-carro.svg" alt="Ícone de carro">
+        <div class="brand-text">
+          <h1>Auto<span>Control</span></h1>
+          <p>Controle de Entrada e Saída de Veículos</p>
         </div>
-        <div class="modal">
-            <div class="logo">
-                <svg class="logo-icon car-logo" viewBox="0 0 24 24">
-                    <path
-                        d="M5.2 11.2 6.7 6.8A2 2 0 0 1 8.6 5.5h6.8a2 2 0 0 1 1.9 1.3l1.5 4.4A2.8 2.8 0 0 1 21 14v4.2a1.3 1.3 0 0 1-1.3 1.3h-1.4a1.3 1.3 0 0 1-1.3-1.3V17H7v1.2a1.3 1.3 0 0 1-1.3 1.3H4.3A1.3 1.3 0 0 1 3 18.2V14a2.8 2.8 0 0 1 2.2-2.8ZM7.3 11h9.4l-1.1-3.2H8.4L7.3 11ZM6.5 14.5a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6Zm11 0a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6Z" />
-                </svg>
+      </header>
 
-                <div class="logo-text">
-                    <h1>A G <strong>N S</strong> </h1>
-                    <p>Controle de Entrada e Saída de Veículos</p>
-                </div>
-                
-            </div>
-            <h1>Bem vindo!</h1>
-            <p>Coloque a placa para continuar.</p>                      
-            <div class="location">
-            <input type="text" class="input_login" id="input-login" placeholder="Digite a placa...">
-            <button class="login" id="login">Entrar</button></div>
-    </main>
+      <div class="login-content">
+        <h2>Bem-vindo!</h2>
+        <p class="subtitle">Faça login para continuar.</p>
+
+        <form id="loginForm">
+          <label class="input-field plate-field" for="placa">
+            <span class="field-icon" aria-hidden="true"> > </span>
+            <input
+              type="text"
+              id="placa"
+              name="placa"
+              placeholder="Placa do carro (ex.: ABC1D23)"
+              autocomplete="off"
+              maxlength="7"
+              aria-label="Placa do carro"
+              required
+            >
+          </label>
+
+          <button class="submit-button" type="submit">
+            <span>Consultar</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg>
+          </button>
+          <p class="message" id="message" role="status"></p>
+        </form>
+      </div>
+    </section>
+    <div class="photo-panel" aria-hidden="true"></div>
+  </main>
+  <script src="src/script/index.js" defer></script>
 </body>
-<script src="src/script/index.js" defer></script>
-
 </html>

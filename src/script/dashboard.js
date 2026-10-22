@@ -6,90 +6,83 @@ const ctxLinha = document.getElementById("Grafico_Movimento");
 const modal = document.getElementById("modalVeiculo");
 const formulario = document.getElementById("formVeiculo");
 
-//  button do menu 
-const inicio_button = document.getElementById("inicio_menu")
-const veiculo_button = document.getElementById("veiculo_menu")
-const entrada_button = document.getElementById("entrada_menu")
-const saida_button = document.getElementById("saida_menu")
-const relatorios_button = document.getElementById("relatorios_menu")
-const config_button = document.getElementById("config_menu")
+//  button do menu
+const inicio_button = document.getElementById("inicio_menu");
+const veiculo_button = document.getElementById("veiculo_menu");
+const entrada_button = document.getElementById("entrada_menu");
+const saida_button = document.getElementById("saida_menu");
+const relatorios_button = document.getElementById("relatorios_menu");
+const config_button = document.getElementById("config_menu");
 // conteudos dos main's
 
-const main_dashboard = document.getElementById('dashboard')
-const main_veiculo = document.getElementById("veiculo_main")
-const main_entrada = document.getElementById("entrada_main")
-const main_saida = document.getElementById("saida_main")
-const main_relatorios = document.getElementById("relatorios_main")
-const main_config = document.getElementById("config_main")
+const main_dashboard = document.getElementById("dashboard");
+const main_veiculo = document.getElementById("veiculo_main");
+const main_entrada = document.getElementById("entrada_main");
+const main_saida = document.getElementById("saida_main");
+const main_relatorios = document.getElementById("relatorios_main");
+const main_config = document.getElementById("config_main");
 
-inicio_button.addEventListener("click", (e) =>{
-  e.preventDefault()
-  main_dashboard.style.display= "block";  
-  main_veiculo.style.display = "none"
-  main_entrada.style.display = "none"
-  main_saida.style.display = "none"
-  main_relatorios.style.display = "none"
-  main_config.style.display = "none"
+inicio_button.addEventListener("click", (e) => {
+  e.preventDefault();
+  main_dashboard.style.display = "block";
+  main_veiculo.style.display = "none";
+  main_entrada.style.display = "none";
+  main_saida.style.display = "none";
+  main_relatorios.style.display = "none";
+  main_config.style.display = "none";
+});
+veiculo_button.addEventListener("click", (e) => {
+  e.preventDefault();
 
-})
-veiculo_button.addEventListener('click', (e)=>{
-  e.preventDefault()
+  main_dashboard.style.display = "none";
+  main_veiculo.style.display = "block";
+  main_entrada.style.display = "none";
+  main_saida.style.display = "none";
+  main_relatorios.style.display = "none";
+  main_config.style.display = "none";
+});
 
-  main_dashboard.style.display= "none";  
-  main_veiculo.style.display = "block"
-  main_entrada.style.display = "none"
-  main_saida.style.display = "none"
-  main_relatorios.style.display = "none"
-  main_config.style.display = "none"
+entrada_button.addEventListener("click", (e) => {
+  e.preventDefault();
 
-})
+  main_dashboard.style.display = "none";
+  main_veiculo.style.display = "none";
+  main_entrada.style.display = "block";
+  main_saida.style.display = "none";
+  main_relatorios.style.display = "none";
+  main_config.style.display = "none";
+});
+saida_button.addEventListener("click", (e) => {
+  e.preventDefault();
 
-entrada_button.addEventListener('click', (e)=>{
-  e.preventDefault()
+  main_dashboard.style.display = "none";
+  main_veiculo.style.display = "none";
+  main_entrada.style.display = "none";
+  main_saida.style.display = "block";
+  main_relatorios.style.display = "none";
+  main_config.style.display = "none";
+});
+relatorios_button.addEventListener("click", (e) => {
+  e.preventDefault();
 
-  main_dashboard.style.display= "none";  
-  main_veiculo.style.display = "none"
-  main_entrada.style.display = "block"
-  main_saida.style.display = "none"
-  main_relatorios.style.display = "none"
-  main_config.style.display = "none"
+  main_dashboard.style.display = "none";
+  main_veiculo.style.display = "none";
+  main_entrada.style.display = "none";
+  main_saida.style.display = "none";
+  main_relatorios.style.display = "block";
+  main_config.style.display = "none";
+});
 
-})
-saida_button.addEventListener('click', (e)=>{
-  e.preventDefault()
+config_button.addEventListener("click", (e) => {
+  e.preventDefault();
 
-  main_dashboard.style.display= "none";  
-  main_veiculo.style.display = "none"
-  main_entrada.style.display = "none"
-  main_saida.style.display = "block"
-  main_relatorios.style.display = "none"
-  main_config.style.display = "none"
-
-})
-relatorios_button.addEventListener('click', (e)=>{
-  e.preventDefault()
-
-  main_dashboard.style.display= "none";  
-  main_veiculo.style.display = "none"
-  main_entrada.style.display = "none"
-  main_saida.style.display = "none"
-  main_relatorios.style.display = "block"
-  main_config.style.display = "none"
-
-})
-
-config_button.addEventListener('click', (e)=>{
-  e.preventDefault()
-
-  main_dashboard.style.display= "none";  
-  main_veiculo.style.display = "none"
-  main_entrada.style.display = "none"
-  main_saida.style.display = "none"
-  main_relatorios.style.display = "none"
-  main_config.style.display = "block"
-
-})
-
+  main_dashboard.style.display = "none";
+  main_veiculo.style.display = "none";
+  main_entrada.style.display = "none";
+  main_saida.style.display = "none";
+  main_relatorios.style.display = "none";
+  main_config.style.display = "block";
+});
 
 button.addEventListener("click", () => {
   window.location.href = "/index.html";
@@ -103,7 +96,6 @@ if (menuSalvo) {
   if (itemSalvo) {
     menuItems.forEach((item) => item.classList.remove("active"));
     itemSalvo.classList.add("active");
-
   }
 }
 
@@ -257,7 +249,6 @@ new Chart(ctxLinha, {
   options: {
     responsive: true,
     maintainAspectRatio: false,
-    
   },
 });
 
@@ -286,6 +277,206 @@ new Chart(ctxPizza, {
   },
 });
 
+const veiculos = [
+  {
+    id: 1,
+    horario: "08:15",
+    placa: "ABC1D23",
+    tipo: "Carro",
+    status: "Dentro",
+  },
+  {
+    id: 2,
+    horario: "09:30",
+    placa: "DEF4G56",
+    tipo: "Moto",
+    status: "Fora",
+  },
+  {
+    id: 3,
+    horario: "10:05",
+    placa: "GHI7J89",
+    tipo: "Carro",
+    status: "Dentro",
+  },
+  {
+    id: 4,
+    horario: "11:20",
+    placa: "JKL2M34",
+    tipo: "Caminhão",
+    status: "Fora",
+  },
+];
 
+let proximoId = 5;
 
-     
+const lista = document.getElementById("lista_veiculos");
+const busca = document.getElementById("buscar_veiculo");
+const vazio = document.getElementById("veiculos_vazio");
+const textoPaginacao = document.getElementById("texto_paginacao");
+
+const botaoCadastrar = document.getElementById("abrir_cadastro_veiculo");
+
+function mostrarVeiculos() {
+  const pesquisa = busca.value.toUpperCase().trim();
+
+  const encontrados = veiculos.filter(function (veiculo) {
+    return veiculo.placa.includes(pesquisa);
+  });
+
+  lista.innerHTML = "";
+
+  encontrados.forEach(function (veiculo) {
+    const linha = document.createElement("tr");
+
+    linha.innerHTML = `
+            <td>${veiculo.horario}</td>
+            <td class="placa-veiculo">${veiculo.placa}</td>
+            <td>${veiculo.tipo}</td>
+            <td>
+                <span class="status-veiculo ${veiculo.status === "Dentro" ? "dentro" : "fora"}">
+                    ${veiculo.status}
+                </span>
+            </td>
+            <td>
+                <div class="acoes-veiculo">
+                    <button class="botao-editar" type="button">Editar</button>
+                    <button class="botao-excluir" type="button">Excluir</button>
+                </div>
+            </td>
+        `;
+
+    linha.querySelector(".botao-editar").addEventListener("click", function () {
+      editarVeiculo(veiculo.id);
+    });
+
+    linha
+      .querySelector(".botao-excluir")
+      .addEventListener("click", function () {
+        excluirVeiculo(veiculo.id);
+      });
+
+    lista.appendChild(linha);
+  });
+
+  vazio.style.display = encontrados.length === 0 ? "block" : "none";
+
+  textoPaginacao.textContent = `Mostrando ${encontrados.length} de ${veiculos.length} veículos`;
+}
+
+function cadastrarVeiculo() {
+  const placa = prompt("Digite a placa do veículo:");
+  if (placa === null || placa.trim() === "") return;
+  if (!verificarPlaca(placa.trim()))  return alert("A placa deve ter exatamente 7 caracteres!");
+    
+  const placaFormatada = placa.toUpperCase().trim();
+
+  if (
+    veiculos.some(function (veiculo) {
+      return veiculo.placa === placaFormatada;
+    })
+  ) {
+    alert("Essa placa já está cadastrada!");
+    return;
+  }
+
+  const tipo = prompt("Digite o tipo: Carro, Moto ou Caminhão:");
+  if (tipo === null || tipo.trim() === "") return;
+
+  const status = prompt("Digite o status: Dentro ou Fora:");
+  if (status === null) return;
+
+  const statusFormatado = status.trim().toLowerCase();
+
+  if (statusFormatado !== "dentro" && statusFormatado !== "fora") {
+    alert("Status inválido! Digite Dentro ou Fora.");
+    return;
+  }
+
+  veiculos.push({
+    id: proximoId++,
+    horario: new Date().toLocaleTimeString("pt-BR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+    placa: placaFormatada,
+    tipo: tipo.trim(),
+    status: statusFormatado === "dentro" ? "Dentro" : "Fora",
+  });
+
+  mostrarVeiculos();
+}
+
+function editarVeiculo(id) {
+  const veiculo = veiculos.find(function (item) {
+    return item.id === id;
+  });
+
+  if (!veiculo) return;
+
+  const novaPlaca = prompt("Digite a nova placa:", veiculo.placa);
+  if (novaPlaca === null || novaPlaca.trim() === "") return;
+  
+
+  const placaFormatada = novaPlaca.toUpperCase().trim();
+
+  if (
+    veiculos.some(function (item) {
+      return item.id !== id && item.placa === placaFormatada;
+    })
+  ) {
+    alert("Essa placa já está cadastrada!");
+    return;
+  }
+
+  const novoTipo = prompt("Digite o novo tipo:", veiculo.tipo);
+  if (novoTipo === null || novoTipo.trim() === "") return;
+
+  const novoStatus = prompt("Digite o status: Dentro ou Fora:", veiculo.status);
+  if (novoStatus === null) return;
+
+  const statusFormatado = novoStatus.trim().toLowerCase();
+
+  if (statusFormatado !== "dentro" && statusFormatado !== "fora") {
+    alert("Status inválido! Digite Dentro ou Fora.");
+    return;
+  }
+
+  veiculo.placa = placaFormatada;
+  veiculo.tipo = novoTipo.trim();
+  veiculo.status = statusFormatado === "dentro" ? "Dentro" : "Fora";
+
+  mostrarVeiculos();
+}
+
+function excluirVeiculo(id) {
+  const indice = veiculos.findIndex(function (veiculo) {
+    return veiculo.id === id;
+  });
+
+  if (indice === -1) return;
+
+  const confirmar = confirm("Deseja excluir este veículo?");
+
+  if (confirmar) {
+    veiculos.splice(indice, 1);
+    mostrarVeiculos();
+  }
+}
+
+busca.addEventListener("input", mostrarVeiculos);
+
+botaoCadastrar.addEventListener("click", function (event) {
+  event.preventDefault();
+  cadastrarVeiculo();
+});
+
+mostrarVeiculos();
+
+function verificarPlaca(placa) {
+  if (placa.length !== 7) {
+    return false;
+  }
+
+  return true;
+}

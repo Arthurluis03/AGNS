@@ -1,27 +1,21 @@
-const login = document.getElementById("login")
+const loginForm = document.getElementById("loginForm");
+const placa = document.getElementById("placa");
+const message = document.getElementById("message");
 
+placa.addEventListener("input", () => {
+  placa.value = placa.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7);
+});
 
-login.addEventListener("click", (e)=>{
-    e.preventDefault()
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-    const input_login = document.getElementById("input-login")
-    if(!input_login.value){ 
-    return alert(`Erro, a placa não existe ou não encontrada
-        Erro.404
-        `)
-    }
+  const placaInformada = placa.value.trim();
 
-    if(input_login.value.length == 7){
-        alert(`
-        placa encontrada
-        Placa: ${input_login.value} `)
-        window.location.href = "./src/html/user.html"
-    }else{
-        alert("Caracteres insuficientes")
-    }
+  if (placaInformada.length == 7) {
+    message.textContent = "Informe uma placa válida com 7 caracteres.";
+    return;
+  }
 
-
-})
-
-
-
+  message.textContent = `Placa ${placaInformada} informada. Conecte a API para consultar o veículo.`;
+  window.location.href = "/src/html/user.html"
+});
