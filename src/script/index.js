@@ -1,21 +1,26 @@
+
+
+
 const loginForm = document.getElementById("loginForm");
 const placa = document.getElementById("placa");
 const message = document.getElementById("message");
 
 placa.addEventListener("input", () => {
-  placa.value = placa.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7);
+    placa.value = placa.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7);
 });
 
 loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const placaInformada = placa.value.trim();
+    const placaInformada = placa.value.trim();
 
-  if (placaInformada.length == 7) {
-    message.textContent = "Informe uma placa válida com 7 caracteres.";
-    return;
-  }
+    if (placaInformada.length != 7) {
+        return message.textContent = "Informe uma placa válida com 7 caracteres.";
+    }
 
-  message.textContent = `Placa ${placaInformada} informada. Conecte a API para consultar o veículo.`;
-  window.location.href = "/src/html/user.html"
+    
+
+
+    message.textContent = `Placa ${placaInformada} informada. ESPERANDO API para consultar o veículo.`;
+    window.location.href="/src/html/user.html"
 });

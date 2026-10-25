@@ -11,6 +11,7 @@
   --field-border: #252c35;
   --text: #f5f5f5;
   --muted: #778392;
+  
 }
 
 html, body {
@@ -323,6 +324,14 @@ body {
   .submit-button {
     min-height: 46px;
   }
+}
+.outro {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.outro:hover {
+    color: var(--text);
 }
 
 @media (max-height: 500px) and (min-width: 601px) {
