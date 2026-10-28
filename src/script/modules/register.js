@@ -6,6 +6,7 @@ const nome = document.getElementById("nome");
 const email = document.getElementById("email");
 const senha = document.getElementById("senha");
 const confirmarSenha = document.getElementById("confirmar_senha");
+const tipo = document.getElementById('tipo_user')
 
 const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
@@ -30,6 +31,7 @@ formulario.addEventListener("submit", function (event) {
     const emailValor = email.value.trim().toLowerCase();
     const senhaValor = senha.value;
     const confirmarValor = confirmarSenha.value;
+    const tipoValor =  tipo_user.value.trim().toLowerCase()
 
     if (senhaValor !== confirmarValor) {
         mensagem.textContent = "As senhas não coincidem.";
@@ -51,7 +53,8 @@ formulario.addEventListener("submit", function (event) {
         id: Date.now(),
         nome: nomeValor,
         email: emailValor,
-        senha: senhaValor
+        senha: senhaValor,
+        tipo: tipoValor
     });
 
     localStorage.setItem("usuarios", JSON.stringify(usuarios));

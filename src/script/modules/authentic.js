@@ -1,23 +1,33 @@
 
-const tipoUsuario = "vigia"; 
+const tipoUsuario = "vigia";
 // Trocar para admin para testar
 // admin ou adm 
 
 const menusRestritos = [
     "relatorios_menu",
-    "config_menu"
+    "config_menu",
+    "veiculo_menu"
 ];
 
 const telasRestritas = [
     "relatorios_main",
-    "config_main"
+    "config_main",
+    "veiculo_main"
 ];
 
-function configurarPermissoes() {
-    const ehAdmin = tipoUsuario === "admin" || "adm";
 
-    // Esconde os menus restritos para o vigia
-    if (!ehAdmin) {
+
+
+// if (menuInicio) {
+//     menuInicio.classList.add("active");
+// }
+
+
+function configurarPermissoes() {
+    const eAdmin = tipoUsuario === "admin" || "adm";
+
+
+    if (!eAdmin) {
         menusRestritos.forEach(function (id) {
             const menu = document.getElementById(id);
 
@@ -50,3 +60,5 @@ function configurarPermissoes() {
 document.addEventListener("DOMContentLoaded", function () {
     configurarPermissoes();
 });
+
+export default configurarPermissoes
