@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AutoControl | Login</title>
-    <link rel="stylesheet" href="src/css/layout/login/login.css" />
+    <link rel="stylesheet" href="/src/css/layout/login/login.css"/>
+    <script src="/src/script/modules/login.js" defer></script>
   </head>
   <body>
     <main class="tela-login">
@@ -12,7 +13,7 @@
         <header class="logo">
           <img
             class="logo-img"
-            src="src/css/img/logo-carro.svg"
+            src="/src/css/img/logo-carro.svg"
             alt="Ícone de carro"
           />
 
@@ -73,7 +74,7 @@
               <a href="./src/html/register.html" id="esqueceuSenha">Não possue conta?</a>
             </div>
             <button class="botao-entrar" type="submit">
-              <span>Entrar</span>
+              <span id="login_button">Entrar</span>
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 12h15M13 5l7 7-7 7" />
               </svg>
