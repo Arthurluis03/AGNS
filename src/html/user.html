@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoControl | Área do Usuário</title>
+    <link rel="stylesheet" href="/src/css/layout/user/user.css">
+</head>
+<body>
+<main class="pagina">
+    <header class="topo">
+        <div>
+            <span class="subtitulo">AUTOCONTROL</span>
+            <h1>Consulta de veículos</h1>
+            <p>Consulte as movimentações de entrada e saída pela placa.</p>
+        </div>
+        <div class="usuario">
+            <span class="usuario-icone">U</span>
+            <div><strong>Área do usuário</strong><small>Consulta de movimentações</small></div>
+        </div>
+    </header>
+
+        <section class="pesquisa">
+            <label for="placa">Buscar por placa</label>
+            <div class="pesquisa-campo">
+                <input id="placa" type="text" placeholder="Digite a placa do veículo..." maxlength="8" autocomplete="off">
+                <button type="button" id="buscar">Buscar</button>
+            </div>
+            <small>Digite a placa para visualizar as entradas e saídas correspondentes.</small>
+        </section>
+
+    <section class="resumo">
+        <article class="card-resumo">
+            <div class="resumo-icone verde">P</div>
+            <div class="resumo-info">
+                <span>Vagas disponíveis</span><strong>52</strong><small>de 250 vagas</small>
+                <div class="barra"><span style="width:79.2%"></span></div>
+            </div>
+        </article>
+        <article class="card-resumo">
+            <div class="resumo-icone vermelho">P</div>
+            <div class="resumo-info">
+                <span>Vagas ocupadas</span><strong>198</strong><small>de 250 vagas</small>
+                <div class="barra"><span class="ocupacao" style="width:79.2%"></span></div>
+            </div>
+        </article>
+    </section>
+
+    <section class="resultado">
+        <div class="resultado-topo">
+            <div><span class="ponto"></span><h2>Movimentações do veículo</h2></div>
+            <span class="placa-atual" id="placaAtual">Todas as placas</span>
+        </div>
+        <div class="historicos">
+            <article class="historico-card">
+                <div class="historico-titulo entrada">
+                    <div><span class="seta">↳</span><h3>Últimas Entradas</h3></div>
+                    <span class="contador" id="contadorEntradas">0 registros</span>
+                </div>
+                <div class="tabela-scroll">
+                    <table>
+                        <thead><tr><th>Horário</th><th>Placa</th><th>Tipo</th></tr></thead>
+                        <tbody id="listaEntradas"></tbody>
+                    </table>
+                </div>
+                <p class="sem-dados" id="semEntradas">Nenhuma entrada encontrada.</p>
+            </article>
+
+            <article class="historico-card">
+                <div class="historico-titulo saida">
+                    <div><span class="seta">↗</span><h3>Últimas Saídas</h3></div>
+                    <span class="contador" id="contadorSaidas">0 registros</span>
+                </div>
+                <div class="tabela-scroll">
+                    <table>
+                        <thead><tr><th>Horário</th><th>Placa</th><th>Tipo</th></tr></thead>
+                        <tbody id="listaSaidas"></tbody>
+                    </table>
+                </div>
+                <p class="sem-dados" id="semSaidas">Nenhuma saída encontrada.</p>
+            </article>
+        </div>
+    </section>
+
+    <footer><span>AutoControl</span><span>Controle de entrada e saída de veículos</span></footer>
+</main>
+
+<script src="/src/script//modules/user.js"></script>
+</body>
+</html>

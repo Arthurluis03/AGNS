@@ -21,6 +21,7 @@ const main_entrada = document.getElementById("entrada_main");
 const main_saida = document.getElementById("saida_main");
 const main_relatorios = document.getElementById("relatorios_main");
 const main_config = document.getElementById("config_main");
+const h1_admin = document.getElementById('h1_admin')
 
 inicio_button.addEventListener("click", (e) => {
   e.preventDefault();
@@ -30,6 +31,8 @@ inicio_button.addEventListener("click", (e) => {
   main_saida.style.display = "none";
   main_relatorios.style.display = "none";
   main_config.style.display = "none";
+  h1_admin.style.display = "block"
+
 });
 veiculo_button.addEventListener("click", (e) => {
   e.preventDefault();
@@ -40,6 +43,8 @@ veiculo_button.addEventListener("click", (e) => {
   main_saida.style.display = "none";
   main_relatorios.style.display = "none";
   main_config.style.display = "none";
+  h1_admin.style.display = "none"
+
 });
 
 entrada_button.addEventListener("click", (e) => {
@@ -51,6 +56,8 @@ entrada_button.addEventListener("click", (e) => {
   main_saida.style.display = "none";
   main_relatorios.style.display = "none";
   main_config.style.display = "none";
+  h1_admin.style.display = "none"
+
 });
 saida_button.addEventListener("click", (e) => {
   e.preventDefault();
@@ -61,6 +68,8 @@ saida_button.addEventListener("click", (e) => {
   main_saida.style.display = "block";
   main_relatorios.style.display = "none";
   main_config.style.display = "none";
+  h1_admin.style.display = "none"
+
 });
 relatorios_button.addEventListener("click", (e) => {
   e.preventDefault();
@@ -71,6 +80,8 @@ relatorios_button.addEventListener("click", (e) => {
   main_saida.style.display = "none";
   main_relatorios.style.display = "block";
   main_config.style.display = "none";
+  h1_admin.style.display = "none"
+
 });
 
 config_button.addEventListener("click", (e) => {
@@ -82,6 +93,8 @@ config_button.addEventListener("click", (e) => {
   main_saida.style.display = "none";
   main_relatorios.style.display = "none";
   main_config.style.display = "block";
+  h1_admin.style.display = "none"
+
 });
 
 button.addEventListener("click", () => {
@@ -280,28 +293,24 @@ new Chart(ctxPizza, {
 const veiculos = [
   {
     id: 1,
-    horario: "08:15",
     placa: "ABC1D23",
     tipo: "Carro",
     status: "Dentro",
   },
   {
     id: 2,
-    horario: "09:30",
     placa: "DEF4G56",
     tipo: "Moto",
     status: "Fora",
   },
   {
     id: 3,
-    horario: "10:05",
     placa: "GHI7J89",
     tipo: "Carro",
     status: "Dentro",
   },
   {
     id: 4,
-    horario: "11:20",
     placa: "JKL2M34",
     tipo: "Caminhão",
     status: "Fora",
@@ -330,7 +339,6 @@ function mostrarVeiculos() {
     const linha = document.createElement("tr");
 
     linha.innerHTML = `
-            <td>${veiculo.horario}</td>
             <td class="placa-veiculo">${veiculo.placa}</td>
             <td>${veiculo.tipo}</td>
             <td>

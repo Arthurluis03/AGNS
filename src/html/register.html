@@ -16,7 +16,7 @@
             <p class="subtitulo">Preencha os dados para se cadastrar</p>
 
             <div class="campo">
-                <label for="nome">Nome completo</label>
+                <label for="nome"></label>
                 <input
                     type="text"
                     id="nome"
@@ -26,7 +26,7 @@
             </div>
 
             <div class="campo">
-                <label for="email">E-mail</label>
+                <label for="email"></label>
                 <input
                     type="email"
                     id="email"
@@ -36,26 +36,22 @@
             </div>
 
             <div class="campo">
-                <label for="senha">Senha</label>
-                <div class="campo-senha">
-                    <input
-                        type="password"
-                        id="senha"
-                        placeholder="Digite sua senha"
-                        required
-                        minlength="6"
-                    >
-                    <button type="button" class="mostrar-senha" data-senha="senha">
+                <label for="senha"></label>
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Digite sua senha"
+                    required
+                ><button type="button" class="mostrar-senha" data-senha="senha">
                         Mostrar
                     </button>
-                </div>
             </div>
-
+                    
             <div class="campo">
-                <label for="confirmar_senha">Confirmar senha</label>
-                <div class="campo-senha">
+                <label for="confirmar_senha"></label>
                     <input
                         type="password"
+                        class="campo-senha"
                         id="confirmar_senha"
                         placeholder="Confirme sua senha"
                         required
@@ -64,8 +60,8 @@
                     <button type="button" class="mostrar-senha" data-senha="confirmar_senha">
                         Mostrar
                     </button>
-                </div>
             </div>
+           
 
             <p id="mensagem"></p>
 
@@ -75,7 +71,7 @@
 
             <p class="texto-login">
                 Já tem uma conta?
-                <a href="/login.html">Entrar</a>
+                <a href="/src/html/login.html">Entrar</a>
             </p>
 
         </form>
