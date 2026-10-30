@@ -480,3 +480,129 @@ function verificarPlaca(placa) {
 
   return true;
 }
+
+const form = document.getElementById("form_usuario");
+
+const campoNome = document.getElementById("usuario_nome");
+const campoSobrenome = document.getElementById("usuario_sobrenome");
+const campoEmail = document.getElementById("usuario_email");
+const campoTelefone = document.getElementById("usuario_telefone");
+const campoLocalizacao = document.getElementById("usuario_localizacao");
+
+const botaoEditar = document.getElementById("editar_usuario");
+const botaoSalvar = document.getElementById("salvar_usuario");
+const botaoSair = document.getElementById("sair_config");
+
+let nomeOriginal = campoNome.value;
+let sobrenomeOriginal = campoSobrenome.value;
+let emailOriginal = campoEmail.value;
+let telefoneOriginal = campoTelefone.value;
+let localizacaoOriginal = campoLocalizacao.value;
+
+
+function bloquearCampos() {
+  campoNome.readOnly = true;
+  campoSobrenome.readOnly = true;
+  campoEmail.readOnly = true;
+  campoTelefone.readOnly = true;
+  campoLocalizacao.disabled = true;
+
+  form.classList.remove("editando");
+  botaoSalvar.disabled = true;
+  botaoEditar.textContent = "Editar";
+}
+
+function liberarCampos() {
+  campoNome.readOnly = false;
+  campoSobrenome.readOnly = false;
+  campoEmail.readOnly = false;
+  campoTelefone.readOnly = false;
+  campoLocalizacao.disabled = false;
+
+  form.classList.add("editando");
+  botaoSalvar.disabled = false;
+  botaoEditar.textContent = "Cancelar";
+}
+
+
+function guardarOriginais() {
+  nomeOriginal = campoNome.value;
+  sobrenomeOriginal = campoSobrenome.value;
+  emailOriginal = campoEmail.value;
+  telefoneOriginal = campoTelefone.value;
+  localizacaoOriginal = campoLocalizacao.value;
+}
+
+function voltarOriginais() {
+  campoNome.value = nomeOriginal;
+  campoSobrenome.value = sobrenomeOriginal;
+  campoEmail.value = emailOriginal;
+  campoTelefone.value = telefoneOriginal;
+  campoLocalizacao.value = localizacaoOriginal;
+}
+
+function salvarNoNavegador() {
+  const dados = {
+    nome: campoNome.value,
+    sobrenome: campoSobrenome.value,
+    email: campoEmail.value,
+    telefone: campoTelefone.value,
+    localizacao: campoLocalizacao.value,
+  };
+
+  localStorage.setItem("autocontrol_usuario", JSON.stringify(dados));
+}
+
+function carregarDoNavegador() {
+  const texto = localStorage.getItem("autocontrol_usuario");
+
+  if (texto === null) {
+    return;
+  }
+
+  const dados = JSON.parse(texto);
+
+  campoNome.value = dados.nome;
+  campoSobrenome.value = dados.sobrenome;
+  campoEmail.value = dados.email;
+  campoTelefone.value = dados.telefone;
+  campoLocalizacao.value = dados.localizacao;
+}
+
+
+botaoEditar.addEventListener("click", function () {
+  if (botaoEditar.textContent === "Cancelar") {
+    voltarOriginais();
+    bloquearCampos();
+  } else {
+    liberarCampos();
+    campoNome.focus();
+  }
+});
+
+// botão salvar
+form.addEventListener("submit", function (evento) {
+  evento.preventDefault();
+
+  if (campoNome.value.trim() === "") {
+    alert("Digite o nome.");
+    return;
+  }
+
+  if (!campoEmail.value.includes("@")) {
+    alert("Digite um e-mail válido.");
+    return;
+  }
+
+  guardarOriginais();
+  salvarNoNavegador();
+  bloquearCampos();
+});
+
+botaoSair.addEventListener("click", function () {
+  document.getElementById("sair_button").click();
+});
+
+carregarDoNavegador();
+guardarOriginais();
+bloquearCampos();

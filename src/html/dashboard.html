@@ -800,7 +800,6 @@
       </div>
     </main>
 
-    <!-- RELATORIOS -->
 
     <main id="relatorios_main" style="display: none">
       <h1 class="h1_txt_veiculo">Relatórios</h1>
@@ -808,12 +807,242 @@
       <div class="div_main"></div>
     </main>
 
-    <!-- CONFIG -->
 
     <main id="config_main" style="display: none">
-      <h1 class="h1_txt_veiculo">configurações</h1>
-
-      <div class="div_main"></div>
-    </main>
+  <h1 class="h1_txt_veiculo">Configuração</h1>
+ 
+  <div class="config-wrapper">
+    <input type="radio" name="config_tab" id="tab_geral" class="config-radio" checked />
+    <input type="radio" name="config_tab" id="tab_usuarios" class="config-radio" />
+    <input type="radio" name="config_tab" id="tab_notificacoes" class="config-radio" />
+ 
+    <div class="config-tabs">
+      <label for="tab_geral">Geral</label>
+      <label for="tab_usuarios">Usuários</label>
+      <label for="tab_notificacoes">Notificações</label>
+    </div>
+ 
+    <section class="config-panel" id="painel_geral">
+      <form class="config-card" id="form_config_geral">
+        <div class="config-coluna">
+          <div class="config-campo">
+            <label for="config_nome">Nome do estacionamento:</label>
+            <input type="text" id="config_nome" value="AutoControl" />
+          </div>
+ 
+          <div class="config-campo">
+            <label for="config_endereco">Endereço:</label>
+            <input type="text" id="config_endereco" value="Av.Exemplo, 123-Centro" />
+          </div>
+ 
+          <div class="config-campo">
+            <label for="config_cidade">Cidade:</label>
+            <input type="text" id="config_cidade" value="São Luís - MA" />
+          </div>
+ 
+          <div class="config-campo">
+            <label for="config_vagas">Capacidade total de vagas:</label>
+            <input type="number" id="config_vagas" value="250" min="1" />
+          </div>
+        </div>
+ 
+        <div class="config-coluna config-coluna-direita">
+          <div class="config-campo">
+            <label for="config_abertura">Horário de funcionamento</label>
+ 
+            <div class="config-horarios">
+              <select id="config_abertura" aria-label="Horário de abertura">
+                <option value="00:00">00:00</option>
+                <option value="01:00">01:00</option>
+                <option value="02:00">02:00</option>
+                <option value="03:00">03:00</option>
+                <option value="04:00">04:00</option>
+                <option value="05:00">05:00</option>
+                <option value="06:00" selected>06:00</option>
+                <option value="07:00">07:00</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+              </select>
+ 
+              <select id="config_fechamento" aria-label="Horário de fechamento">
+                <option value="00:00">00:00</option>
+                <option value="01:00">01:00</option>
+                <option value="02:00">02:00</option>
+                <option value="03:00">03:00</option>
+                <option value="04:00">04:00</option>
+                <option value="05:00">05:00</option>
+                <option value="06:00">06:00</option>
+                <option value="07:00">07:00</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00" selected>22:00</option>
+                <option value="23:00">23:00</option>
+              </select>
+            </div>
+          </div>
+ 
+          <div class="config-switch-linha">
+            <span id="label_entrada_apos">Permitir entrada após o horário</span>
+ 
+            <label class="switch">
+              <input
+                type="checkbox"
+                id="config_entrada_apos"
+                aria-labelledby="label_entrada_apos"
+                checked
+              />
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+ 
+          <button type="submit" class="config-botao-salvar" id="salvar_config">
+            Salvar alterações
+          </button>
+        </div>
+      </form>
+    </section>
+ 
+    <section class="config-panel" id="painel_usuarios">
+  <input type="radio" name="usuario_sub" id="sub_usuario" class="config-radio" checked />
+  <input type="radio" name="usuario_sub" id="sub_login" class="config-radio" />
+ 
+  <div class="usuario-layout">
+    <aside class="usuario-perfil">
+      <div class="usuario-avatar-area">
+        <div class="usuario-avatar">
+          <!-- aqui ficaria a foto de perfil -->
+           
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M5 20a7 7 0 0 1 14 0" />
+          </svg>
+        </div>
+ 
+        <span class="usuario-avatar-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="m6 12.5 4 4 8-9" />
+          </svg>
+        </span>
+      </div>
+ 
+      <h2 class="usuario-saudacao">Olá, <span id="usuario_saudacao_nome">Administrador</span>!</h2>
+ 
+      <nav class="usuario-menu">
+        <label for="sub_usuario" class="usuario-item">
+          <svg class="icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="3.5" />
+            <path d="M5 20a7 7 0 0 1 14 0" />
+          </svg>
+          <span>Usuário</span>
+        </label>
+ 
+        <label for="sub_login" class="usuario-item">
+          <svg class="icon" viewBox="0 0 24 24">
+            <rect x="5" y="11" width="14" height="9" rx="2" />
+            <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+          </svg>
+          <span>Login e Senha</span>
+        </label>
+        <button type="button" class="usuario-item usuario-item-sair" id="sair_config">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4" />
+            <path d="M14 8l4 4-4 4M18 12H9" />
+          </svg>
+          <span>Sair</span>
+        </button>
+      </nav>
+    </aside>
+ 
+    <div class="usuario-conteudo" id="conteudo_usuario">
+      <form class="usuario-card" id="form_usuario" novalidate>
+        <h2 class="usuario-titulo">Dados Pessoais</h2>
+        <div class="usuario-grid">
+          <div class="usuario-campo">
+            <label for="usuario_nome">Nome</label>
+            <input type="text" id="usuario_nome" value="Vitória" readonly />
+          </div>
+          <div class="usuario-campo">
+            <label for="usuario_sobrenome">Sobrenome</label>
+            <input type="text" id="usuario_sobrenome" value="Alvina" readonly />
+          </div>
+          <div class="usuario-campo usuario-campo-full">
+            <label for="usuario_email">E-mail</label>
+ 
+            <div class="usuario-input-icone">
+              <input
+                type="email"
+                id="usuario_email"
+                value="vitoriaalvina@gmail.com"
+                readonly
+              />
+              <svg class="usuario-verificado" viewBox="0 0 24 24" aria-label="E-mail verificado">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m7.5 12.5 3 3 6-6.5" />
+              </svg>
+            </div>
+          </div>
+          <div class="usuario-campo">
+            <label for="usuario_telefone">Número</label>
+            <input type="tel" id="usuario_telefone" value="(98) 3245-0022" readonly />
+          </div>
+          <div class="usuario-campo">
+            <label for="usuario_localizacao">Localização</label>
+            <select id="usuario_localizacao" disabled>
+              <option value="São Luís - MA" selected>São Luís - MA</option>
+              <option value="Imperatriz - MA">Imperatriz - MA</option>
+              <option value="Caxias - MA">Caxias - MA</option>
+              <option value="Timon - MA">Timon - MA</option>
+              <option value="Teresina - PI">Teresina - PI</option>
+            </select>
+          </div>
+        </div>
+        <div class="usuario-acoes">
+          <button type="button" class="usuario-botao-editar" id="editar_usuario">Editar</button>
+          <button type="submit" class="usuario-botao-salvar" id="salvar_usuario" disabled>salvar</button>
+        </div>
+      </form>
+    </div>
+    <div class="usuario-conteudo" id="conteudo_login">
+      <div class="usuario-card usuario-card-vazio">
+        <h2 class="usuario-titulo">Login e Senha</h2>
+        <p>Alteração de login e senha em breve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+    <section class="config-panel" id="painel_notificacoes">
+      <div class="config-card config-card-vazio">
+        <p>Configurações de notificações em breve.</p>
+      </div>
+    </section>
+  </div>
+</main>
   </body>
 </html>

@@ -22,5 +22,7 @@ loginForm.addEventListener("submit", (event) => {
 
 
     message.textContent = `Placa ${placaInformada} informada. ESPERANDO API para consultar o veículo.`;
-    window.location.href="/src/html/user.html"
+    window.location.href="/src/html/user.html" 
+
+    // aqui pai de familia 
 });
