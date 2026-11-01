@@ -1,7 +1,4 @@
-// HORÁRIO DE ENTRADA
 const horarioEntrada = Date.now();
-
-// CONTADOR
 function atualizarTempo() {
     const agora = Date.now();
 
@@ -21,8 +18,5 @@ function atualizarTempo() {
     document.getElementById("tempo").textContent = tempoFormatado;
 }
 
-// ATUALIZAR AO ENTRAR
 atualizarTempo();
-
-// ATUALIZAR A CADA SEGUNDO
 setInterval(atualizarTempo, 1000);

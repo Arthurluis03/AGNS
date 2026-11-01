@@ -4,7 +4,6 @@ const menuItems = document.querySelectorAll(".menu a");
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.querySelector(".sidebar");
 
-// Menus
 const inicio_button = document.getElementById("inicio_menu");
 const veiculo_button = document.getElementById("veiculo_menu");
 const entrada_button = document.getElementById("entrada_menu");
@@ -12,7 +11,6 @@ const saida_button = document.getElementById("saida_menu");
 const relatorios_button = document.getElementById("relatorios_menu");
 const config_button = document.getElementById("config_menu");
 
-// Conteúdos
 const main_dashboard = document.getElementById("dashboard");
 const main_veiculo = document.getElementById("veiculo_main");
 const main_entrada = document.getElementById("entrada_main");
@@ -21,7 +19,6 @@ const main_relatorios = document.getElementById("relatorios_main");
 const main_config = document.getElementById("config_main");
 const h1_admin = document.getElementById("h1_admin");
 
-// Navegação
 function mostrarMenu(menu) {
     main_dashboard.style.display = menu === "inicio" ? "block" : "none";
     main_veiculo.style.display = menu === "veiculo" ? "block" : "none";
@@ -62,13 +59,10 @@ config_button.addEventListener("click", function (e) {
     e.preventDefault();
     mostrarMenu("config");
 });
-
-// Botão sair
 button.addEventListener("click", function () {
     window.location.href = "/index.html";
 });
 
-// Menu ativo
 const menuSalvo = localStorage.getItem("menuSelecionado");
 
 if (menuSalvo) {
@@ -106,7 +100,6 @@ menuItems.forEach(function (item) {
     });
 });
 
-// Menu responsivo
 menuToggle.addEventListener("click", function () {
     const aberto = sidebar.classList.toggle("menu-open");
 
@@ -133,7 +126,6 @@ document.addEventListener("click", function (event) {
     }
 });
 
-// Modal de entrada e saída
 const modalMovimentacao = document.getElementById("modalVeiculo");
 const formularioMovimentacao = document.getElementById("formVeiculo");
 
@@ -211,7 +203,6 @@ formularioMovimentacao.addEventListener("submit", function (event) {
     fecharModal();
 });
 
-// Gráfico de linhas
 const ctxLinha = document.getElementById("Grafico_Movimento");
 
 new Chart(ctxLinha, {
@@ -245,7 +236,6 @@ new Chart(ctxLinha, {
     }
 });
 
-// Gráfico de pizza
 const ctxPizza = document.getElementById("Grafico_Pizza");
 
 new Chart(ctxPizza, {
@@ -266,7 +256,6 @@ new Chart(ctxPizza, {
     }
 });
 
-// VEÍCULOS
 const veiculos = [
     {
         id: 1,
@@ -302,8 +291,6 @@ const vazio = document.getElementById("veiculos_vazio");
 const textoPaginacao = document.getElementById("texto_paginacao");
 
 const botaoCadastrar = document.getElementById("abrir_cadastro_veiculo");
-
-// Modal dinâmico
 const modal = document.getElementById("modal");
 const modalConteudo = document.getElementById("modal-conteudo");
 
@@ -317,12 +304,10 @@ function fecharModalDinamico() {
     modalConteudo.innerHTML = "";
 }
 
-// Verificar placa
 function verificarPlaca(placa) {
     return placa.length === 7;
 }
 
-// Mostrar veículos
 function mostrarVeiculos() {
     const pesquisa = busca.value.toUpperCase().trim();
 
@@ -368,7 +353,6 @@ function mostrarVeiculos() {
         `Mostrando ${encontrados.length} de ${veiculos.length} veículos`;
 }
 
-// Abrir cadastro
 function cadastrarVeiculo() {
     abrirModalDinamico(`
         <h2>Cadastrar</h2>
@@ -452,7 +436,6 @@ function cadastrarVeiculo() {
     });
 }
 
-// Editar veículo
 function editarVeiculo(id) {
     const veiculo = veiculos.find(function (item) {
         return item.id === id;
@@ -538,7 +521,6 @@ function editarVeiculo(id) {
     });
 }
 
-// Excluir veículo
 function excluirVeiculo(id) {
     const veiculo = veiculos.find(function (item) {
         return item.id === id;
@@ -582,19 +564,15 @@ modal.addEventListener("click", function (event) {
     }
 });
 
-// Pesquisa
 busca.addEventListener("input", mostrarVeiculos);
 
-// Botão cadastrar
 botaoCadastrar.addEventListener("click", function (event) {
     event.preventDefault();
     cadastrarVeiculo();
 });
 
-// Carregar veículos
 mostrarVeiculos();
 
-// CONFIGURAÇÕES DO USUÁRIO
 const form = document.getElementById("form_usuario");
 
 const campoNome = document.getElementById("usuario_nome");
@@ -613,7 +591,6 @@ let emailOriginal = campoEmail.value;
 let telefoneOriginal = campoTelefone.value;
 let localizacaoOriginal = campoLocalizacao.value;
 
-// Bloquear campos
 function bloquearCampos() {
     campoNome.readOnly = true;
     campoSobrenome.readOnly = true;
@@ -627,7 +604,6 @@ function bloquearCampos() {
     botaoEditar.textContent = "Editar";
 }
 
-// Liberar campos
 function liberarCampos() {
     campoNome.readOnly = false;
     campoSobrenome.readOnly = false;
@@ -641,7 +617,6 @@ function liberarCampos() {
     botaoEditar.textContent = "Cancelar";
 }
 
-// Guardar dados originais
 function guardarOriginais() {
     nomeOriginal = campoNome.value;
     sobrenomeOriginal = campoSobrenome.value;
@@ -650,7 +625,6 @@ function guardarOriginais() {
     localizacaoOriginal = campoLocalizacao.value;
 }
 
-// Voltar aos dados originais
 function voltarOriginais() {
     campoNome.value = nomeOriginal;
     campoSobrenome.value = sobrenomeOriginal;
@@ -659,7 +633,6 @@ function voltarOriginais() {
     campoLocalizacao.value = localizacaoOriginal;
 }
 
-// Salvar no navegador
 function salvarNoNavegador() {
     const dados = {
         nome: campoNome.value,
@@ -672,7 +645,6 @@ function salvarNoNavegador() {
     localStorage.setItem("autocontrol_usuario", JSON.stringify(dados));
 }
 
-// Carregar do navegador
 function carregarDoNavegador() {
     const texto = localStorage.getItem("autocontrol_usuario");
 
@@ -687,7 +659,6 @@ function carregarDoNavegador() {
     campoLocalizacao.value = dados.localizacao;
 }
 
-// Botão editar configurações
 botaoEditar.addEventListener("click", function () {
     if (botaoEditar.textContent === "Cancelar") {
         voltarOriginais();
@@ -698,7 +669,6 @@ botaoEditar.addEventListener("click", function () {
     }
 });
 
-// Botão salvar configurações
 form.addEventListener("submit", function (evento) {
     evento.preventDefault();
 
@@ -716,13 +686,10 @@ form.addEventListener("submit", function (evento) {
     salvarNoNavegador();
     bloquearCampos();
 });
-
-// Botão sair das configurações
 botaoSair.addEventListener("click", function () {
     document.getElementById("sair_button").click();
 });
 
-// Inicializar configurações
 carregarDoNavegador();
 guardarOriginais();
 bloquearCampos();

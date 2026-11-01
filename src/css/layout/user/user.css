@@ -21,7 +21,6 @@ body {
     padding: 40px 20px;
 }
 
-/* CARD DE PERMANÊNCIA */
 
 .card-permanencia {
     width: 380px;
@@ -68,8 +67,6 @@ body {
     font-size: 12px;
     margin-top: 7px;
 }
-
-/* CARDS DE VAGAS */
 
 .card-vagas {
     width: 380px;
@@ -120,7 +117,6 @@ body {
     font-size: 12px;
 }
 
-/* BARRAS */
 
 .barra {
     width: 100%;
@@ -146,7 +142,6 @@ body {
     width: 20.8%;
 }
 
-/* HOVER PARA COMPUTADOR */
 
 @media (hover: hover) and (pointer: fine) {
     .card-permanencia:hover,
@@ -163,7 +158,6 @@ body {
     }
 }
 
-/* FUNDO PARA COMPUTADOR */
 @media (min-width: 601px) {
     body {
         background-color: #050709;
@@ -181,7 +175,6 @@ body {
     }
 }
 
-/* FUNDO PARA CELULAR */
 @media (max-width: 600px) {
     body {
         background: #050709;

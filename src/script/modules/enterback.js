@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 const botoes = document.querySelectorAll(".botao-alterar");
-=======
 // const botoes = document.querySelectorAll(".botao-alterar");
 
 // botoes.forEach(function(botao) {
@@ -45,4 +43,3 @@ const botoes = document.querySelectorAll(".botao-alterar");
 
 
 
->>>>>>> f78dabc2b516cf3d4b159f8461d7c60f6041893f
