@@ -1,320 +1,297 @@
+
 const button = document.getElementById("sair_button");
 const menuItems = document.querySelectorAll(".menu a");
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.querySelector(".sidebar");
-const ctxLinha = document.getElementById("Grafico_Movimento");
-const modal = document.getElementById("modalVeiculo");
-const formulario = document.getElementById("formVeiculo");
 
-//  button do menu
+// Menus
 const inicio_button = document.getElementById("inicio_menu");
 const veiculo_button = document.getElementById("veiculo_menu");
 const entrada_button = document.getElementById("entrada_menu");
 const saida_button = document.getElementById("saida_menu");
 const relatorios_button = document.getElementById("relatorios_menu");
 const config_button = document.getElementById("config_menu");
-// conteudos dos main's
 
+// Conteúdos
 const main_dashboard = document.getElementById("dashboard");
 const main_veiculo = document.getElementById("veiculo_main");
 const main_entrada = document.getElementById("entrada_main");
 const main_saida = document.getElementById("saida_main");
 const main_relatorios = document.getElementById("relatorios_main");
 const main_config = document.getElementById("config_main");
-const h1_admin = document.getElementById('h1_admin')
+const h1_admin = document.getElementById("h1_admin");
 
-inicio_button.addEventListener("click", (e) => {
-  e.preventDefault();
-  main_dashboard.style.display = "block";
-  main_veiculo.style.display = "none";
-  main_entrada.style.display = "none";
-  main_saida.style.display = "none";
-  main_relatorios.style.display = "none";
-  main_config.style.display = "none";
-  h1_admin.style.display = "block"
+// Navegação
+function mostrarMenu(menu) {
+    main_dashboard.style.display = menu === "inicio" ? "block" : "none";
+    main_veiculo.style.display = menu === "veiculo" ? "block" : "none";
+    main_entrada.style.display = menu === "entrada" ? "block" : "none";
+    main_saida.style.display = menu === "saida" ? "block" : "none";
+    main_relatorios.style.display = menu === "relatorios" ? "block" : "none";
+    main_config.style.display = menu === "config" ? "block" : "none";
 
-});
-veiculo_button.addEventListener("click", (e) => {
-  e.preventDefault();
+    h1_admin.style.display = menu === "inicio" ? "block" : "none";
+}
 
-  main_dashboard.style.display = "none";
-  main_veiculo.style.display = "block";
-  main_entrada.style.display = "none";
-  main_saida.style.display = "none";
-  main_relatorios.style.display = "none";
-  main_config.style.display = "none";
-  h1_admin.style.display = "none"
-
+inicio_button.addEventListener("click", function (e) {
+    e.preventDefault();
+    mostrarMenu("inicio");
 });
 
-entrada_button.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  main_dashboard.style.display = "none";
-  main_veiculo.style.display = "none";
-  main_entrada.style.display = "block";
-  main_saida.style.display = "none";
-  main_relatorios.style.display = "none";
-  main_config.style.display = "none";
-  h1_admin.style.display = "none"
-
-});
-saida_button.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  main_dashboard.style.display = "none";
-  main_veiculo.style.display = "none";
-  main_entrada.style.display = "none";
-  main_saida.style.display = "block";
-  main_relatorios.style.display = "none";
-  main_config.style.display = "none";
-  h1_admin.style.display = "none"
-
-});
-relatorios_button.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  main_dashboard.style.display = "none";
-  main_veiculo.style.display = "none";
-  main_entrada.style.display = "none";
-  main_saida.style.display = "none";
-  main_relatorios.style.display = "block";
-  main_config.style.display = "none";
-  h1_admin.style.display = "none"
-
+veiculo_button.addEventListener("click", function (e) {
+    e.preventDefault();
+    mostrarMenu("veiculo");
 });
 
-config_button.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  main_dashboard.style.display = "none";
-  main_veiculo.style.display = "none";
-  main_entrada.style.display = "none";
-  main_saida.style.display = "none";
-  main_relatorios.style.display = "none";
-  main_config.style.display = "block";
-  h1_admin.style.display = "none"
-
+entrada_button.addEventListener("click", function (e) {
+    e.preventDefault();
+    mostrarMenu("entrada");
 });
 
-button.addEventListener("click", () => {
-  window.location.href = "/index.html";
+saida_button.addEventListener("click", function (e) {
+    e.preventDefault();
+    mostrarMenu("saida");
 });
 
+relatorios_button.addEventListener("click", function (e) {
+    e.preventDefault();
+    mostrarMenu("relatorios");
+});
+
+config_button.addEventListener("click", function (e) {
+    e.preventDefault();
+    mostrarMenu("config");
+});
+
+// Botão sair
+button.addEventListener("click", function () {
+    window.location.href = "/index.html";
+});
+
+// Menu ativo
 const menuSalvo = localStorage.getItem("menuSelecionado");
 
 if (menuSalvo) {
-  const itemSalvo = document.querySelector(`.menu a[data-menu="${menuSalvo}"]`);
+    const itemSalvo = document.querySelector(
+        `.menu a[data-menu="${menuSalvo}"]`
+    );
 
-  if (itemSalvo) {
-    menuItems.forEach((item) => item.classList.remove("active"));
-    itemSalvo.classList.add("active");
-  }
+    if (itemSalvo) {
+        menuItems.forEach(function (item) {
+            item.classList.remove("active");
+        });
+
+        itemSalvo.classList.add("active");
+        mostrarMenu(menuSalvo);
+    }
 }
 
-menuItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    menuItems.forEach((link) => link.classList.remove("active"));
-    item.classList.add("active");
+menuItems.forEach(function (item) {
+    item.addEventListener("click", function () {
+        menuItems.forEach(function (link) {
+            link.classList.remove("active");
+        });
 
-    localStorage.setItem("menuSelecionado", item.dataset.menu);
+        item.classList.add("active");
 
-    if (window.innerWidth <= 600) {
-      sidebar.classList.remove("menu-open");
-      document.body.classList.remove("menu-visible");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Abrir menu");
+        localStorage.setItem("menuSelecionado", item.dataset.menu);
+
+        if (window.innerWidth <= 600) {
+            sidebar.classList.remove("menu-open");
+            document.body.classList.remove("menu-visible");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Abrir menu");
+        }
+    });
+});
+
+// Menu responsivo
+menuToggle.addEventListener("click", function () {
+    const aberto = sidebar.classList.toggle("menu-open");
+
+    document.body.classList.toggle("menu-visible", aberto);
+
+    menuToggle.setAttribute("aria-expanded", aberto);
+    menuToggle.setAttribute(
+        "aria-label",
+        aberto ? "Fechar menu" : "Abrir menu"
+    );
+});
+
+document.addEventListener("click", function (event) {
+    const clickFora =
+        !sidebar.contains(event.target) &&
+        !menuToggle.contains(event.target);
+
+    if (clickFora && sidebar.classList.contains("menu-open")) {
+        sidebar.classList.remove("menu-open");
+        document.body.classList.remove("menu-visible");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menu");
     }
-  });
 });
 
-menuToggle.addEventListener("click", () => {
-  const aberto = sidebar.classList.toggle("menu-open");
-
-  document.body.classList.toggle("menu-visible", aberto);
-  menuToggle.setAttribute("aria-expanded", aberto);
-  menuToggle.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
-});
-
-// usar o target pra ver qual elemento foi clicado
-
-document.addEventListener("click", (event) => {
-  const clickF =
-    !sidebar.contains(event.target) && !menuToggle.contains(event.target);
-
-  if (clickF && sidebar.classList.contains("menu-open")) {
-    sidebar.classList.remove("menu-open");
-    document.body.classList.remove("menu-visible");
-
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Abrir menu");
-  }
-});
+// Modal de entrada e saída
+const modalMovimentacao = document.getElementById("modalVeiculo");
+const formularioMovimentacao = document.getElementById("formVeiculo");
 
 let movimentacao = "entrada";
 
 function abrirModal(tipo) {
-  movimentacao = tipo;
+    movimentacao = tipo;
 
-  if (tipo === "entrada") {
-    document.getElementById("tituloModal").textContent = "Adicionar entrada";
-  } else {
-    document.getElementById("tituloModal").textContent = "Adicionar saída";
-  }
+    if (tipo === "entrada") {
+        document.getElementById("tituloModal").textContent =
+            "Adicionar entrada";
+    } else {
+        document.getElementById("tituloModal").textContent =
+            "Adicionar saída";
+    }
 
-  formulario.reset();
-  modal.hidden = false;
+    formularioMovimentacao.reset();
+    modalMovimentacao.hidden = false;
 }
 
 function fecharModal() {
-  modal.hidden = true;
+    modalMovimentacao.hidden = true;
 }
 
-formulario.addEventListener("submit", function (event) {
-  event.preventDefault();
+formularioMovimentacao.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  let horario = document.getElementById("horarioVeiculo").value;
-  let placa = document.getElementById("placaVeiculo").value.toUpperCase();
-  let tipo = document.getElementById("tipoVeiculo").value;
+    const horario = document.getElementById("horarioVeiculo").value;
+    const placa = document.getElementById("placaVeiculo").value.toUpperCase();
+    const tipo = document.getElementById("tipoVeiculo").value;
 
-  if (horario === "" || placa === "" || tipo === "") {
-    alert("Preencha todos os campos!");
-    return;
-  }
+    if (horario === "" || placa === "" || tipo === "") {
+        alert("Preencha todos os campos!");
+        return;
+    }
 
-  let historico;
+    let historico;
 
-  if (movimentacao === "entrada") {
-    historico = document.querySelector(
-      ".historico-grid .historico-card:first-child .historico-tabela",
-    );
-  } else {
-    historico = document.querySelector(
-      ".historico-grid .historico-card:last-child .historico-tabela",
-    );
-  }
+    if (movimentacao === "entrada") {
+        historico = document.querySelector(
+            ".historico-grid .historico-card:first-child .historico-tabela"
+        );
+    } else {
+        historico = document.querySelector(
+            ".historico-grid .historico-card:last-child .historico-tabela"
+        );
+    }
 
-  let linha = document.createElement("div");
-  linha.className = "historico-linha";
+    const linha = document.createElement("div");
+    linha.className = "historico-linha";
 
-  let horarioTexto = document.createElement("span");
-  horarioTexto.textContent = horario;
+    const horarioTexto = document.createElement("span");
+    horarioTexto.textContent = horario;
 
-  let placaTexto = document.createElement("span");
-  placaTexto.textContent = placa;
+    const placaTexto = document.createElement("span");
+    placaTexto.textContent = placa;
 
-  let tipoTexto = document.createElement("span");
-  tipoTexto.textContent = tipo;
-  tipoTexto.className = "tipo-veiculo";
+    const tipoTexto = document.createElement("span");
+    tipoTexto.textContent = tipo;
+    tipoTexto.className = "tipo-veiculo";
 
-  if (movimentacao === "entrada") {
-    tipoTexto.classList.add("entrada-tipo");
-  } else {
-    tipoTexto.classList.add("saida-tipo");
-  }
+    if (movimentacao === "entrada") {
+        tipoTexto.classList.add("entrada-tipo");
+    } else {
+        tipoTexto.classList.add("saida-tipo");
+    }
 
-  linha.appendChild(horarioTexto);
-  linha.appendChild(placaTexto);
-  linha.appendChild(tipoTexto);
+    linha.appendChild(horarioTexto);
+    linha.appendChild(placaTexto);
+    linha.appendChild(tipoTexto);
 
-  let cabecalho = historico.querySelector(".historico-colunas");
-  cabecalho.insertAdjacentElement("afterend", linha);
+    const cabecalho = historico.querySelector(".historico-colunas");
+    cabecalho.insertAdjacentElement("afterend", linha);
 
-  fecharModal();
+    fecharModal();
 });
 
-//  fazer parte dos graficos
+// Gráfico de linhas
+const ctxLinha = document.getElementById("Grafico_Movimento");
 
 new Chart(ctxLinha, {
-  type: "line",
-  data: {
-    labels: [
-      "02hr",
-      "04hr",
-      "06hr",
-      "08h",
-      "10h",
-      "12h",
-      "14h",
-      "16h",
-      "18h",
-      "20hr",
-      "22hr",
-      "24hr",
-    ],
-    datasets: [
-      {
-        label: "Entradas",
-        data: [4, 6, 8, 12, 19, 15, 39, 25, 20, 30, 50, 10],
-        borderColor: "#16a77b",
-        backgroundColor: "#16a77b",
-        tension: 0.4,
-      },
-      {
-        label: "Saídas",
-        data: [8, 20, 14, 12, 18, 22, 25, 10, 37, 23, 2, 50],
-        borderColor: "#ed3861",
-        backgroundColor: "#ed3861",
-        tension: 0.4,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-  },
+    type: "line",
+    data: {
+        labels: [
+            "02hr", "04hr", "06hr", "08h",
+            "10h", "12h", "14h", "16h",
+            "18h", "20hr", "22hr", "24hr"
+        ],
+        datasets: [
+            {
+                label: "Entradas",
+                data: [4, 6, 8, 12, 19, 15, 39, 25, 20, 30, 50, 10],
+                borderColor: "#16a77b",
+                backgroundColor: "#16a77b",
+                tension: 0.4
+            },
+            {
+                label: "Saídas",
+                data: [8, 20, 14, 12, 18, 22, 25, 10, 37, 23, 2, 50],
+                borderColor: "#ed3861",
+                backgroundColor: "#ed3861",
+                tension: 0.4
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
 });
 
+// Gráfico de pizza
 const ctxPizza = document.getElementById("Grafico_Pizza");
 
 new Chart(ctxPizza, {
-  type: "doughnut",
-  data: {
-    labels: ["Livre", "Ocup."],
-    datasets: [
-      {
-        data: [138, 110],
-        backgroundColor: ["#16a77b", "#F64468"],
-        borderWidth: 0,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    straked: {
-      y: {
-        backgroundColor: "White",
-      },
+    type: "doughnut",
+    data: {
+        labels: ["Livre", "Ocup."],
+        datasets: [
+            {
+                data: [138, 110],
+                backgroundColor: ["#16a77b", "#F64468"],
+                borderWidth: 0
+            }
+        ]
     },
-  },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
 });
 
+// VEÍCULOS
 const veiculos = [
-  {
-    id: 1,
-    placa: "ABC1D23",
-    tipo: "Carro",
-    status: "Dentro",
-  },
-  {
-    id: 2,
-    placa: "DEF4G56",
-    tipo: "Moto",
-    status: "Fora",
-  },
-  {
-    id: 3,
-    placa: "GHI7J89",
-    tipo: "Carro",
-    status: "Dentro",
-  },
-  {
-    id: 4,
-    placa: "JKL2M34",
-    tipo: "Caminhão",
-    status: "Fora",
-  },
+    {
+        id: 1,
+        placa: "ABC1D23",
+        tipo: "Carro",
+        status: "Dentro"
+    },
+    {
+        id: 2,
+        placa: "DEF4G56",
+        tipo: "Moto",
+        status: "Fora"
+    },
+    {
+        id: 3,
+        placa: "GHI7J89",
+        tipo: "Carro",
+        status: "Dentro"
+    },
+    {
+        id: 4,
+        placa: "JKL2M34",
+        tipo: "Caminhão",
+        status: "Fora"
+    }
 ];
 
 let proximoId = 5;
@@ -326,19 +303,39 @@ const textoPaginacao = document.getElementById("texto_paginacao");
 
 const botaoCadastrar = document.getElementById("abrir_cadastro_veiculo");
 
+// Modal dinâmico
+const modal = document.getElementById("modal");
+const modalConteudo = document.getElementById("modal-conteudo");
+
+function abrirModalDinamico(conteudo) {
+    modalConteudo.innerHTML = conteudo;
+    modal.hidden = false;
+}
+
+function fecharModalDinamico() {
+    modal.hidden = true;
+    modalConteudo.innerHTML = "";
+}
+
+// Verificar placa
+function verificarPlaca(placa) {
+    return placa.length === 7;
+}
+
+// Mostrar veículos
 function mostrarVeiculos() {
-  const pesquisa = busca.value.toUpperCase().trim();
+    const pesquisa = busca.value.toUpperCase().trim();
 
-  const encontrados = veiculos.filter(function (veiculo) {
-    return veiculo.placa.includes(pesquisa);
-  });
+    const encontrados = veiculos.filter(function (veiculo) {
+        return veiculo.placa.includes(pesquisa);
+    });
 
-  lista.innerHTML = "";
+    lista.innerHTML = "";
 
-  encontrados.forEach(function (veiculo) {
-    const linha = document.createElement("tr");
+    encontrados.forEach(function (veiculo) {
+        const linha = document.createElement("tr");
 
-    linha.innerHTML = `
+        linha.innerHTML = `
             <td class="placa-veiculo">${veiculo.placa}</td>
             <td>${veiculo.tipo}</td>
             <td>
@@ -354,141 +351,250 @@ function mostrarVeiculos() {
             </td>
         `;
 
-    linha.querySelector(".botao-editar").addEventListener("click", function () {
-      editarVeiculo(veiculo.id);
+        linha.querySelector(".botao-editar").addEventListener("click", function () {
+            editarVeiculo(veiculo.id);
+        });
+
+        linha.querySelector(".botao-excluir").addEventListener("click", function () {
+            excluirVeiculo(veiculo.id);
+        });
+
+        lista.appendChild(linha);
     });
 
-    linha
-      .querySelector(".botao-excluir")
-      .addEventListener("click", function () {
-        excluirVeiculo(veiculo.id);
-      });
+    vazio.style.display = encontrados.length === 0 ? "block" : "none";
 
-    lista.appendChild(linha);
-  });
-
-  vazio.style.display = encontrados.length === 0 ? "block" : "none";
-
-  textoPaginacao.textContent = `Mostrando ${encontrados.length} de ${veiculos.length} veículos`;
+    textoPaginacao.textContent =
+        `Mostrando ${encontrados.length} de ${veiculos.length} veículos`;
 }
 
+// Abrir cadastro
 function cadastrarVeiculo() {
-  const placa = prompt("Digite a placa do veículo:");
-  if (placa === null || placa.trim() === "") return;
-  if (!verificarPlaca(placa.trim()))  return alert("A placa deve ter exatamente 7 caracteres!");
-    
-  const placaFormatada = placa.toUpperCase().trim();
+    abrirModalDinamico(`
+        <h2>Cadastrar</h2>
 
-  if (
-    veiculos.some(function (veiculo) {
-      return veiculo.placa === placaFormatada;
-    })
-  ) {
-    alert("Essa placa já está cadastrada!");
-    return;
-  }
+        <form id="formCadastroVeiculo">
 
-  const tipo = prompt("Digite o tipo: Carro, Moto ou Caminhão:");
-  if (tipo === null || tipo.trim() === "") return;
+            <input
+                type="text"
+                id="novaPlaca"
+                placeholder="Digite a placa"
+                maxlength="7"
+                required
+            >
 
-  const status = prompt("Digite o status: Dentro ou Fora:");
-  if (status === null) return;
+            <input
+                type="text"
+                id="novoTipo"
+                placeholder="Digite o tipo"
+                required
+            >
 
-  const statusFormatado = status.trim().toLowerCase();
+            <input
+                type="text"
+                id="novoStatus"
+                placeholder="Digite o status"
+                required
+            >
 
-  if (statusFormatado !== "dentro" && statusFormatado !== "fora") {
-    alert("Status inválido! Digite Dentro ou Fora.");
-    return;
-  }
+            <div class="modal-botoes">
+                <button type="button" id="cancelarModal">Cancelar</button>
+                <button type="submit">Salvar</button>
+            </div>
 
-  veiculos.push({
-    id: proximoId++,
-    horario: new Date().toLocaleTimeString("pt-BR", {
-      hour: "2-digit",
-      minute: "2-digit",
-    }),
-    placa: placaFormatada,
-    tipo: tipo.trim(),
-    status: statusFormatado === "dentro" ? "Dentro" : "Fora",
-  });
+        </form>
+    `);
 
-  mostrarVeiculos();
+    document.getElementById("cancelarModal").addEventListener("click", fecharModalDinamico);
+
+    document.getElementById("formCadastroVeiculo").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const placa = document.getElementById("novaPlaca").value.toUpperCase().trim();
+        const tipo = document.getElementById("novoTipo").value.trim();
+        const status = document.getElementById("novoStatus").value.trim().toLowerCase();
+
+        if (!verificarPlaca(placa)) {
+            alert("A placa deve ter exatamente 7 caracteres!");
+            return;
+        }
+
+        if (veiculos.some(function (veiculo) {
+            return veiculo.placa === placa;
+        })) {
+            alert("Essa placa já está cadastrada!");
+            return;
+        }
+
+        if (tipo === "") {
+            alert("Digite o tipo do veículo!");
+            return;
+        }
+
+        if (status !== "dentro" && status !== "fora") {
+            alert("Status inválido! Digite Dentro ou Fora.");
+            return;
+        }
+
+        veiculos.push({
+            id: proximoId++,
+            horario: new Date().toLocaleTimeString("pt-BR", {
+                hour: "2-digit",
+                minute: "2-digit"
+            }),
+            placa: placa,
+            tipo: tipo,
+            status: status === "dentro" ? "Dentro" : "Fora"
+        });
+
+        mostrarVeiculos();
+        fecharModalDinamico();
+    });
 }
 
+// Editar veículo
 function editarVeiculo(id) {
-  const veiculo = veiculos.find(function (item) {
-    return item.id === id;
-  });
+    const veiculo = veiculos.find(function (item) {
+        return item.id === id;
+    });
 
-  if (!veiculo) return;
+    if (!veiculo) return;
 
-  const novaPlaca = prompt("Digite a nova placa:", veiculo.placa);
-  if (novaPlaca === null || novaPlaca.trim() === "") return;
-  
+    abrirModalDinamico(`
+        <h2>${veiculo.placa}</h2>
 
-  const placaFormatada = novaPlaca.toUpperCase().trim();
+        <form id="formEditarVeiculo">
 
-  if (
-    veiculos.some(function (item) {
-      return item.id !== id && item.placa === placaFormatada;
-    })
-  ) {
-    alert("Essa placa já está cadastrada!");
-    return;
-  }
+            <input
+                type="text"
+                id="novaPlaca"
+                placeholder="Digite a nova placa"
+                value="${veiculo.placa}"
+                maxlength="7"
+                required
+            >
 
-  const novoTipo = prompt("Digite o novo tipo:", veiculo.tipo);
-  if (novoTipo === null || novoTipo.trim() === "") return;
+            <input
+                type="text"
+                id="novoTipo"
+                placeholder="Digite o tipo"
+                value="${veiculo.tipo}"
+                required
+            >
 
-  const novoStatus = prompt("Digite o status: Dentro ou Fora:", veiculo.status);
-  if (novoStatus === null) return;
+            <input
+                type="text"
+                id="novoStatus"
+                placeholder="Digite o status"
+                value="${veiculo.status}"
+                required
+            >
 
-  const statusFormatado = novoStatus.trim().toLowerCase();
+            <div class="modal-botoes">
+                <button type="button" id="cancelarModal">Cancelar</button>
+                <button type="submit">Salvar</button>
+            </div>
 
-  if (statusFormatado !== "dentro" && statusFormatado !== "fora") {
-    alert("Status inválido! Digite Dentro ou Fora.");
-    return;
-  }
+        </form>
+    `);
 
-  veiculo.placa = placaFormatada;
-  veiculo.tipo = novoTipo.trim();
-  veiculo.status = statusFormatado === "dentro" ? "Dentro" : "Fora";
+    document.getElementById("cancelarModal").addEventListener("click", fecharModalDinamico);
 
-  mostrarVeiculos();
+    document.getElementById("formEditarVeiculo").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const placa = document.getElementById("novaPlaca").value.toUpperCase().trim();
+        const tipo = document.getElementById("novoTipo").value.trim();
+        const status = document.getElementById("novoStatus").value.trim().toLowerCase();
+
+        if (!verificarPlaca(placa)) {
+            alert("A placa deve ter exatamente 7 caracteres!");
+            return;
+        }
+
+        if (veiculos.some(function (item) {
+            return item.id !== id && item.placa === placa;
+        })) {
+            alert("Essa placa já está cadastrada!");
+            return;
+        }
+
+        if (tipo === "") {
+            alert("Digite o tipo do veículo!");
+            return;
+        }
+
+        if (status !== "dentro" && status !== "fora") {
+            alert("Status inválido! Digite Dentro ou Fora.");
+            return;
+        }
+
+        veiculo.placa = placa;
+        veiculo.tipo = tipo;
+        veiculo.status = status === "dentro" ? "Dentro" : "Fora";
+
+        mostrarVeiculos();
+        fecharModalDinamico();
+    });
 }
 
+// Excluir veículo
 function excluirVeiculo(id) {
-  const indice = veiculos.findIndex(function (veiculo) {
-    return veiculo.id === id;
-  });
+    const veiculo = veiculos.find(function (item) {
+        return item.id === id;
+    });
 
-  if (indice === -1) return;
+    if (!veiculo) return;
 
-  const confirmar = confirm("Deseja excluir este veículo?");
+    abrirModalDinamico(`
+        <h2>Excluir</h2>
 
-  if (confirmar) {
-    veiculos.splice(indice, 1);
-    mostrarVeiculos();
-  }
+        <p class="texto-modal">
+            Deseja realmente excluir o veículo ${veiculo.placa}?
+        </p>
+
+        <div class="modal-botoes">
+            <button type="button" id="cancelarModal">Cancelar</button>
+            <button type="button" id="confirmarExcluir">Excluir</button>
+        </div>
+    `);
+
+    document.getElementById("cancelarModal").addEventListener("click", fecharModalDinamico);
+
+    document.getElementById("confirmarExcluir").addEventListener("click", function () {
+        const indice = veiculos.findIndex(function (item) {
+            return item.id === id;
+        });
+
+        if (indice === -1) return;
+
+        veiculos.splice(indice, 1);
+
+        mostrarVeiculos();
+        fecharModalDinamico();
+    });
 }
 
-busca.addEventListener("input", mostrarVeiculos);
-
-botaoCadastrar.addEventListener("click", function (event) {
-  event.preventDefault();
-  cadastrarVeiculo();
+// Fechar modal clicando fora
+modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+        fecharModalDinamico();
+    }
 });
 
+// Pesquisa
+busca.addEventListener("input", mostrarVeiculos);
+
+// Botão cadastrar
+botaoCadastrar.addEventListener("click", function (event) {
+    event.preventDefault();
+    cadastrarVeiculo();
+});
+
+// Carregar veículos
 mostrarVeiculos();
 
-function verificarPlaca(placa) {
-  if (placa.length !== 7) {
-    return false;
-  }
-
-  return true;
-}
-
+// CONFIGURAÇÕES DO USUÁRIO
 const form = document.getElementById("form_usuario");
 
 const campoNome = document.getElementById("usuario_nome");
@@ -507,110 +613,116 @@ let emailOriginal = campoEmail.value;
 let telefoneOriginal = campoTelefone.value;
 let localizacaoOriginal = campoLocalizacao.value;
 
-
+// Bloquear campos
 function bloquearCampos() {
-  campoNome.readOnly = true;
-  campoSobrenome.readOnly = true;
-  campoEmail.readOnly = true;
-  campoTelefone.readOnly = true;
-  campoLocalizacao.disabled = true;
+    campoNome.readOnly = true;
+    campoSobrenome.readOnly = true;
+    campoEmail.readOnly = true;
+    campoTelefone.readOnly = true;
+    campoLocalizacao.disabled = true;
 
-  form.classList.remove("editando");
-  botaoSalvar.disabled = true;
-  botaoEditar.textContent = "Editar";
+    form.classList.remove("editando");
+
+    botaoSalvar.disabled = true;
+    botaoEditar.textContent = "Editar";
 }
 
+// Liberar campos
 function liberarCampos() {
-  campoNome.readOnly = false;
-  campoSobrenome.readOnly = false;
-  campoEmail.readOnly = false;
-  campoTelefone.readOnly = false;
-  campoLocalizacao.disabled = false;
+    campoNome.readOnly = false;
+    campoSobrenome.readOnly = false;
+    campoEmail.readOnly = false;
+    campoTelefone.readOnly = false;
+    campoLocalizacao.disabled = false;
 
-  form.classList.add("editando");
-  botaoSalvar.disabled = false;
-  botaoEditar.textContent = "Cancelar";
+    form.classList.add("editando");
+
+    botaoSalvar.disabled = false;
+    botaoEditar.textContent = "Cancelar";
 }
 
-
+// Guardar dados originais
 function guardarOriginais() {
-  nomeOriginal = campoNome.value;
-  sobrenomeOriginal = campoSobrenome.value;
-  emailOriginal = campoEmail.value;
-  telefoneOriginal = campoTelefone.value;
-  localizacaoOriginal = campoLocalizacao.value;
+    nomeOriginal = campoNome.value;
+    sobrenomeOriginal = campoSobrenome.value;
+    emailOriginal = campoEmail.value;
+    telefoneOriginal = campoTelefone.value;
+    localizacaoOriginal = campoLocalizacao.value;
 }
 
+// Voltar aos dados originais
 function voltarOriginais() {
-  campoNome.value = nomeOriginal;
-  campoSobrenome.value = sobrenomeOriginal;
-  campoEmail.value = emailOriginal;
-  campoTelefone.value = telefoneOriginal;
-  campoLocalizacao.value = localizacaoOriginal;
+    campoNome.value = nomeOriginal;
+    campoSobrenome.value = sobrenomeOriginal;
+    campoEmail.value = emailOriginal;
+    campoTelefone.value = telefoneOriginal;
+    campoLocalizacao.value = localizacaoOriginal;
 }
 
+// Salvar no navegador
 function salvarNoNavegador() {
-  const dados = {
-    nome: campoNome.value,
-    sobrenome: campoSobrenome.value,
-    email: campoEmail.value,
-    telefone: campoTelefone.value,
-    localizacao: campoLocalizacao.value,
-  };
+    const dados = {
+        nome: campoNome.value,
+        sobrenome: campoSobrenome.value,
+        email: campoEmail.value,
+        telefone: campoTelefone.value,
+        localizacao: campoLocalizacao.value
+    };
 
-  localStorage.setItem("autocontrol_usuario", JSON.stringify(dados));
+    localStorage.setItem("autocontrol_usuario", JSON.stringify(dados));
 }
 
+// Carregar do navegador
 function carregarDoNavegador() {
-  const texto = localStorage.getItem("autocontrol_usuario");
+    const texto = localStorage.getItem("autocontrol_usuario");
 
-  if (texto === null) {
-    return;
-  }
+    if (texto === null) return;
 
-  const dados = JSON.parse(texto);
+    const dados = JSON.parse(texto);
 
-  campoNome.value = dados.nome;
-  campoSobrenome.value = dados.sobrenome;
-  campoEmail.value = dados.email;
-  campoTelefone.value = dados.telefone;
-  campoLocalizacao.value = dados.localizacao;
+    campoNome.value = dados.nome;
+    campoSobrenome.value = dados.sobrenome;
+    campoEmail.value = dados.email;
+    campoTelefone.value = dados.telefone;
+    campoLocalizacao.value = dados.localizacao;
 }
 
-
+// Botão editar configurações
 botaoEditar.addEventListener("click", function () {
-  if (botaoEditar.textContent === "Cancelar") {
-    voltarOriginais();
-    bloquearCampos();
-  } else {
-    liberarCampos();
-    campoNome.focus();
-  }
+    if (botaoEditar.textContent === "Cancelar") {
+        voltarOriginais();
+        bloquearCampos();
+    } else {
+        liberarCampos();
+        campoNome.focus();
+    }
 });
 
-// botão salvar
+// Botão salvar configurações
 form.addEventListener("submit", function (evento) {
-  evento.preventDefault();
+    evento.preventDefault();
 
-  if (campoNome.value.trim() === "") {
-    alert("Digite o nome.");
-    return;
-  }
+    if (campoNome.value.trim() === "") {
+        alert("Digite o nome.");
+        return;
+    }
 
-  if (!campoEmail.value.includes("@")) {
-    alert("Digite um e-mail válido.");
-    return;
-  }
+    if (!campoEmail.value.includes("@")) {
+        alert("Digite um e-mail válido.");
+        return;
+    }
 
-  guardarOriginais();
-  salvarNoNavegador();
-  bloquearCampos();
+    guardarOriginais();
+    salvarNoNavegador();
+    bloquearCampos();
 });
 
+// Botão sair das configurações
 botaoSair.addEventListener("click", function () {
-  document.getElementById("sair_button").click();
+    document.getElementById("sair_button").click();
 });
 
+// Inicializar configurações
 carregarDoNavegador();
 guardarOriginais();
 bloquearCampos();

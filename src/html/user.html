@@ -3,88 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoControl | Área do Usuário</title>
-    <link rel="stylesheet" href="/src/css/layout/user/user.css">
+    <title>User</title>
+    <link rel="stylesheet" href="../css/layout/user/user.css">
+    <script src="../script/modules/user.js" defer></script>
 </head>
 <body>
-<main class="pagina">
-    <header class="topo">
-        <div>
-            <span class="subtitulo">AUTOCONTROL</span>
-            <h1>Consulta de veículos</h1>
-            <p>Consulte as movimentações de entrada e saída pela placa.</p>
-        </div>
-        <div class="usuario">
-            <span class="usuario-icone">U</span>
-            <div><strong>Área do usuário</strong><small>Consulta de movimentações</small></div>
-        </div>
-    </header>
+    <main class="usuario">
 
-        <section class="pesquisa">
-            <label for="placa">Buscar por placa</label>
-            <div class="pesquisa-campo">
-                <input id="placa" type="text" placeholder="Digite a placa do veículo..." maxlength="8" autocomplete="off">
-                <button type="button" id="buscar">Buscar</button>
-            </div>
-            <small>Digite a placa para visualizar as entradas e saídas correspondentes.</small>
-        </section>
+    <section class="card-permanencia">
+        <p class="titulo-card">Horário de Permanência</p>
 
-    <section class="resumo">
-        <article class="card-resumo">
-            <div class="resumo-icone verde">P</div>
-            <div class="resumo-info">
-                <span>Vagas disponíveis</span><strong>52</strong><small>de 250 vagas</small>
-                <div class="barra"><span style="width:79.2%"></span></div>
-            </div>
-        </article>
-        <article class="card-resumo">
-            <div class="resumo-icone vermelho">P</div>
-            <div class="resumo-info">
-                <span>Vagas ocupadas</span><strong>198</strong><small>de 250 vagas</small>
-                <div class="barra"><span class="ocupacao" style="width:79.2%"></span></div>
-            </div>
-        </article>
+        <div class="relogio">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40"></circle>
+                <line x1="50" y1="27" x2="50" y2="50"></line>
+                <line x1="50" y1="50" x2="64" y2="64"></line>
+            </svg>
+        </div>
+
+        <h2 id="tempo">00:00:00</h2>
+        <span class="legenda-tempo">Tempo de permanência</span>
     </section>
 
-    <section class="resultado">
-        <div class="resultado-topo">
-            <div><span class="ponto"></span><h2>Movimentações do veículo</h2></div>
-            <span class="placa-atual" id="placaAtual">Todas as placas</span>
-        </div>
-        <div class="historicos">
-            <article class="historico-card">
-                <div class="historico-titulo entrada">
-                    <div><span class="seta">↳</span><h3>Últimas Entradas</h3></div>
-                    <span class="contador" id="contadorEntradas">0 registros</span>
-                </div>
-                <div class="tabela-scroll">
-                    <table>
-                        <thead><tr><th>Horário</th><th>Placa</th><th>Tipo</th></tr></thead>
-                        <tbody id="listaEntradas"></tbody>
-                    </table>
-                </div>
-                <p class="sem-dados" id="semEntradas">Nenhuma entrada encontrada.</p>
-            </article>
+    <section class="card-vagas">
 
-            <article class="historico-card">
-                <div class="historico-titulo saida">
-                    <div><span class="seta">↗</span><h3>Últimas Saídas</h3></div>
-                    <span class="contador" id="contadorSaidas">0 registros</span>
-                </div>
-                <div class="tabela-scroll">
-                    <table>
-                        <thead><tr><th>Horário</th><th>Placa</th><th>Tipo</th></tr></thead>
-                        <tbody id="listaSaidas"></tbody>
-                    </table>
-                </div>
-                <p class="sem-dados" id="semSaidas">Nenhuma saída encontrada.</p>
-            </article>
+        <div class="icone-vaga">P</div>
+
+        <div class="info-vaga">
+            <p>Vagas Ocupadas</p>
+            <h2 id="vagasOcupadas">198</h2>
+            <small>de 250 vagas</small>
+
+            <div class="barra">
+                <div class="progresso ocupadas"></div>
+            </div>
         </div>
+
     </section>
 
-    <footer><span>AutoControl</span><span>Controle de entrada e saída de veículos</span></footer>
+    <section class="card-vagas">
+
+        <div class="icone-vaga">P</div>
+
+        <div class="info-vaga">
+            <p>Vagas Disponíveis</p>
+            <h2 id="vagasDisponiveis">52</h2>
+            <small>de 250 vagas</small>
+
+            <div class="barra">
+                <div class="progresso disponiveis"></div>
+            </div>
+        </div>
+
+    </section>
+
 </main>
 
-<script src="/src/script//modules/user.js"></script>
 </body>
 </html>
