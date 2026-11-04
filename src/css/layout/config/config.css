@@ -1,5 +1,4 @@
 
-/* ===== CONFIGURAÇÃO ===== */
 
 #config_main {
   --cfg-bg-card: #0b0f16;
@@ -17,14 +16,12 @@
   margin-top: 24px;
 }
 
-/* esconde os radios que controlam as abas */
 .config-radio {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* ----- Abas ----- */
 .config-tabs {
   display: flex;
   justify-content: center;
@@ -68,7 +65,6 @@
   border-radius: 2px;
 }
 
-/* ----- Painéis ----- */
 .config-panel {
   display: none;
 }
@@ -79,7 +75,6 @@
   display: block;
 }
 
-/* ----- Card ----- */
 .config-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -108,7 +103,6 @@
   gap: 22px;
 }
 
-/* ----- Campos ----- */
 .config-campo {
   display: flex;
   flex-direction: column;
@@ -141,7 +135,6 @@
   box-shadow: 0 0 0 2px rgba(232, 89, 12, 0.2);
 }
 
-/* remove setinhas do input number */
 .config-campo input[type="number"]::-webkit-outer-spin-button,
 .config-campo input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -150,7 +143,6 @@
 
 
 
-/* ----- Horários ----- */
 .config-horarios {
   display: flex;
   gap: 16px;
@@ -160,7 +152,6 @@
   cursor: pointer;
 }
 
-/* ----- Switch ----- */
 .config-switch-linha {
   display: flex;
   align-items: center;
@@ -220,7 +211,6 @@
   box-shadow: 0 0 0 2px rgba(232, 89, 12, 0.4);
 }
 
-/* ----- Botão salvar ----- */
 .config-botao-salvar {
   margin-top: 8px;
   height: 42px;
@@ -243,8 +233,6 @@
 .config-botao-salvar:active {
   transform: scale(0.99);
 }
-/* ===== CONFIGURAÇÃO > USUÁRIOS ===== */
-/* Usa as variáveis --cfg-* já definidas em #config_main (config.css) */
 
 .usuario-layout {
   display: grid;
@@ -252,8 +240,6 @@
   gap: 12px;
   align-items: stretch;
 }
-
-/* ----- Card esquerdo ----- */
 .usuario-perfil {
   display: flex;
   flex-direction: column;
@@ -327,7 +313,6 @@
   text-align: center;
 }
 
-/* ----- Menu do perfil ----- */
 .usuario-menu {
   display: flex;
   flex-direction: column;
@@ -373,7 +358,6 @@
   color: var(--cfg-laranja);
 }
 
-/* ----- Conteúdo (direita) ----- */
 .usuario-conteudo {
   display: none;
 }
@@ -406,7 +390,6 @@
   color: var(--cfg-texto);
 }
 
-/* ----- Campos ----- */
 .usuario-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -456,7 +439,6 @@
   color: var(--cfg-texto);
 }
 
-/* modo edição (classe adicionada pelo JS) */
 .usuario-card.editando input,
 .usuario-card.editando select {
   border-color: #3a4556;
@@ -468,7 +450,6 @@
   box-shadow: 0 0 0 2px rgba(232, 89, 12, 0.2);
 }
 
-/* e-mail com ícone de verificado */
 .usuario-input-icone {
   position: relative;
 }
@@ -497,7 +478,6 @@
   stroke-linejoin: round;
 }
 
-/* ----- Botões ----- */
 .usuario-acoes {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -1,4 +1,3 @@
-
 const button = document.getElementById("sair_button");
 const menuItems = document.querySelectorAll(".menu a");
 const menuToggle = document.getElementById("menuToggle");
@@ -20,110 +19,104 @@ const main_config = document.getElementById("config_main");
 const h1_admin = document.getElementById("h1_admin");
 
 function mostrarMenu(menu) {
-    main_dashboard.style.display = menu === "inicio" ? "block" : "none";
-    main_veiculo.style.display = menu === "veiculo" ? "block" : "none";
-    main_entrada.style.display = menu === "entrada" ? "block" : "none";
-    main_saida.style.display = menu === "saida" ? "block" : "none";
-    main_relatorios.style.display = menu === "relatorios" ? "block" : "none";
-    main_config.style.display = menu === "config" ? "block" : "none";
+  main_dashboard.style.display = menu === "inicio" ? "block" : "none";
+  main_veiculo.style.display = menu === "veiculo" ? "block" : "none";
+  main_entrada.style.display = menu === "entrada" ? "block" : "none";
+  main_saida.style.display = menu === "saida" ? "block" : "none";
+  main_relatorios.style.display = menu === "relatorios" ? "block" : "none";
+  main_config.style.display = menu === "config" ? "block" : "none";
 
-    h1_admin.style.display = menu === "inicio" ? "block" : "none";
+  h1_admin.style.display = menu === "inicio" ? "block" : "none";
 }
 
 inicio_button.addEventListener("click", function (e) {
-    e.preventDefault();
-    mostrarMenu("inicio");
+  e.preventDefault();
+  mostrarMenu("inicio");
 });
 
 veiculo_button.addEventListener("click", function (e) {
-    e.preventDefault();
-    mostrarMenu("veiculo");
+  e.preventDefault();
+  mostrarMenu("veiculo");
 });
 
 entrada_button.addEventListener("click", function (e) {
-    e.preventDefault();
-    mostrarMenu("entrada");
+  e.preventDefault();
+  mostrarMenu("entrada");
 });
 
 saida_button.addEventListener("click", function (e) {
-    e.preventDefault();
-    mostrarMenu("saida");
+  e.preventDefault();
+  mostrarMenu("saida");
 });
 
 relatorios_button.addEventListener("click", function (e) {
-    e.preventDefault();
-    mostrarMenu("relatorios");
+  e.preventDefault();
+  mostrarMenu("relatorios");
 });
 
 config_button.addEventListener("click", function (e) {
-    e.preventDefault();
-    mostrarMenu("config");
+  e.preventDefault();
+  mostrarMenu("config");
 });
 button.addEventListener("click", function () {
-    window.location.href = "/index.html";
+  window.location.href = "/index.html";
 });
 
 const menuSalvo = localStorage.getItem("menuSelecionado");
 
 if (menuSalvo) {
-    const itemSalvo = document.querySelector(
-        `.menu a[data-menu="${menuSalvo}"]`
-    );
+  const itemSalvo = document.querySelector(`.menu a[data-menu="${menuSalvo}"]`);
 
-    if (itemSalvo) {
-        menuItems.forEach(function (item) {
-            item.classList.remove("active");
-        });
+  if (itemSalvo) {
+    menuItems.forEach(function (item) {
+      item.classList.remove("active");
+    });
 
-        itemSalvo.classList.add("active");
-        mostrarMenu(menuSalvo);
-    }
+    itemSalvo.classList.add("active");
+    mostrarMenu(menuSalvo);
+  }
 }
 
 menuItems.forEach(function (item) {
-    item.addEventListener("click", function () {
-        menuItems.forEach(function (link) {
-            link.classList.remove("active");
-        });
-
-        item.classList.add("active");
-
-        localStorage.setItem("menuSelecionado", item.dataset.menu);
-
-        if (window.innerWidth <= 600) {
-            sidebar.classList.remove("menu-open");
-            document.body.classList.remove("menu-visible");
-
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Abrir menu");
-        }
+  item.addEventListener("click", function () {
+    menuItems.forEach(function (link) {
+      link.classList.remove("active");
     });
+
+    item.classList.add("active");
+
+    localStorage.setItem("menuSelecionado", item.dataset.menu);
+
+    if (window.innerWidth <= 600) {
+      sidebar.classList.remove("menu-open");
+      document.body.classList.remove("menu-visible");
+
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Abrir menu");
+    }
+  });
 });
 
 menuToggle.addEventListener("click", function () {
-    const aberto = sidebar.classList.toggle("menu-open");
+  const aberto = sidebar.classList.toggle("menu-open");
 
-    document.body.classList.toggle("menu-visible", aberto);
+  document.body.classList.toggle("menu-visible", aberto);
 
-    menuToggle.setAttribute("aria-expanded", aberto);
-    menuToggle.setAttribute(
-        "aria-label",
-        aberto ? "Fechar menu" : "Abrir menu"
-    );
+  menuToggle.setAttribute("aria-expanded", aberto);
+  menuToggle.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
 });
 
 document.addEventListener("click", function (event) {
-    const clickFora =
-        !sidebar.contains(event.target) &&
-        !menuToggle.contains(event.target);
+  const clickFora =
+    !sidebar.contains(event.target) && !menuToggle.contains(event.target);
 
-    if (clickFora && sidebar.classList.contains("menu-open")) {
-        sidebar.classList.remove("menu-open");
-        document.body.classList.remove("menu-visible");
+  if (clickFora && sidebar.classList.contains("menu-open")) {
+    sidebar.classList.remove("menu-open");
+    document.body.classList.remove("menu-visible");
 
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Abrir menu");
-    }
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+  }
 });
 
 const modalMovimentacao = document.getElementById("modalVeiculo");
@@ -132,155 +125,162 @@ const formularioMovimentacao = document.getElementById("formVeiculo");
 let movimentacao = "entrada";
 
 function abrirModal(tipo) {
-    movimentacao = tipo;
+  movimentacao = tipo;
 
-    if (tipo === "entrada") {
-        document.getElementById("tituloModal").textContent =
-            "Adicionar entrada";
-    } else {
-        document.getElementById("tituloModal").textContent =
-            "Adicionar saída";
-    }
+  if (tipo === "entrada") {
+    document.getElementById("tituloModal").textContent = "Adicionar entrada";
+  } else {
+    document.getElementById("tituloModal").textContent = "Adicionar saída";
+  }
 
-    formularioMovimentacao.reset();
-    modalMovimentacao.hidden = false;
+  formularioMovimentacao.reset();
+  modalMovimentacao.hidden = false;
 }
 
 function fecharModal() {
-    modalMovimentacao.hidden = true;
+  modalMovimentacao.hidden = true;
 }
 
 formularioMovimentacao.addEventListener("submit", function (event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const horario = document.getElementById("horarioVeiculo").value;
-    const placa = document.getElementById("placaVeiculo").value.toUpperCase();
-    const tipo = document.getElementById("tipoVeiculo").value;
+  const horario = document.getElementById("horarioVeiculo").value;
+  const placa = document.getElementById("placaVeiculo").value.toUpperCase();
+  const tipo = document.getElementById("tipoVeiculo").value;
 
-    if (horario === "" || placa === "" || tipo === "") {
-        alert("Preencha todos os campos!");
-        return;
-    }
+  if (horario === "" || placa === "" || tipo === "") {
+    alert("Preencha todos os campos!");
+    return;
+  }
 
-    let historico;
+  let historico;
 
-    if (movimentacao === "entrada") {
-        historico = document.querySelector(
-            ".historico-grid .historico-card:first-child .historico-tabela"
-        );
-    } else {
-        historico = document.querySelector(
-            ".historico-grid .historico-card:last-child .historico-tabela"
-        );
-    }
+  if (movimentacao === "entrada") {
+    historico = document.querySelector(
+      ".historico-grid .historico-card:first-child .historico-tabela",
+    );
+  } else {
+    historico = document.querySelector(
+      ".historico-grid .historico-card:last-child .historico-tabela",
+    );
+  }
 
-    const linha = document.createElement("div");
-    linha.className = "historico-linha";
+  const linha = document.createElement("div");
+  linha.className = "historico-linha";
 
-    const horarioTexto = document.createElement("span");
-    horarioTexto.textContent = horario;
+  const horarioTexto = document.createElement("span");
+  horarioTexto.textContent = horario;
 
-    const placaTexto = document.createElement("span");
-    placaTexto.textContent = placa;
+  const placaTexto = document.createElement("span");
+  placaTexto.textContent = placa;
 
-    const tipoTexto = document.createElement("span");
-    tipoTexto.textContent = tipo;
-    tipoTexto.className = "tipo-veiculo";
+  const tipoTexto = document.createElement("span");
+  tipoTexto.textContent = tipo;
+  tipoTexto.className = "tipo-veiculo";
 
-    if (movimentacao === "entrada") {
-        tipoTexto.classList.add("entrada-tipo");
-    } else {
-        tipoTexto.classList.add("saida-tipo");
-    }
+  if (movimentacao === "entrada") {
+    tipoTexto.classList.add("entrada-tipo");
+  } else {
+    tipoTexto.classList.add("saida-tipo");
+  }
 
-    linha.appendChild(horarioTexto);
-    linha.appendChild(placaTexto);
-    linha.appendChild(tipoTexto);
+  linha.appendChild(horarioTexto);
+  linha.appendChild(placaTexto);
+  linha.appendChild(tipoTexto);
 
-    const cabecalho = historico.querySelector(".historico-colunas");
-    cabecalho.insertAdjacentElement("afterend", linha);
+  const cabecalho = historico.querySelector(".historico-colunas");
+  cabecalho.insertAdjacentElement("afterend", linha);
 
-    fecharModal();
+  fecharModal();
 });
 
 const ctxLinha = document.getElementById("Grafico_Movimento");
 
 new Chart(ctxLinha, {
-    type: "line",
-    data: {
-        labels: [
-            "02hr", "04hr", "06hr", "08h",
-            "10h", "12h", "14h", "16h",
-            "18h", "20hr", "22hr", "24hr"
-        ],
-        datasets: [
-            {
-                label: "Entradas",
-                data: [4, 6, 8, 12, 19, 15, 39, 25, 20, 30, 50, 10],
-                borderColor: "#16a77b",
-                backgroundColor: "#16a77b",
-                tension: 0.4
-            },
-            {
-                label: "Saídas",
-                data: [8, 20, 14, 12, 18, 22, 25, 10, 37, 23, 2, 50],
-                borderColor: "#ed3861",
-                backgroundColor: "#ed3861",
-                tension: 0.4
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false
-    }
+  type: "line",
+  data: {
+    labels: [
+      "02hr",
+      "04hr",
+      "06hr",
+      "08h",
+      "10h",
+      "12h",
+      "14h",
+      "16h",
+      "18h",
+      "20hr",
+      "22hr",
+      "24hr",
+    ],
+    datasets: [
+      {
+        label: "Entradas",
+        data: [4, 6, 8, 12, 19, 15, 39, 25, 20, 30, 50, 10],
+        borderColor: "#16a77b",
+        backgroundColor: "#16a77b",
+        tension: 0.4,
+      },
+      {
+        label: "Saídas",
+        data: [8, 20, 14, 12, 18, 22, 25, 10, 37, 23, 2, 50],
+        borderColor: "#ed3861",
+        backgroundColor: "#ed3861",
+        tension: 0.4,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+  },
 });
 
 const ctxPizza = document.getElementById("Grafico_Pizza");
 
 new Chart(ctxPizza, {
-    type: "doughnut",
-    data: {
-        labels: ["Livre", "Ocup."],
-        datasets: [
-            {
-                data: [138, 110],
-                backgroundColor: ["#16a77b", "#F64468"],
-                borderWidth: 0
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false
-    }
+  type: "doughnut",
+  data: {
+    labels: ["Livre", "Ocup."],
+    datasets: [
+      {
+        data: [138, 110],
+        backgroundColor: ["#16a77b", "#F64468"],
+        borderWidth: 0,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+  },
 });
 
 const veiculos = [
-    {
-        id: 1,
-        placa: "ABC1D23",
-        tipo: "Carro",
-        status: "Dentro"
-    },
-    {
-        id: 2,
-        placa: "DEF4G56",
-        tipo: "Moto",
-        status: "Fora"
-    },
-    {
-        id: 3,
-        placa: "GHI7J89",
-        tipo: "Carro",
-        status: "Dentro"
-    },
-    {
-        id: 4,
-        placa: "JKL2M34",
-        tipo: "Caminhão",
-        status: "Fora"
-    }
+  {
+    id: 1,
+    placa: "ABC1D23",
+    tipo: "Carro",
+    status: "Dentro",
+  },
+  {
+    id: 2,
+    placa: "DEF4G56",
+    tipo: "Moto",
+    status: "Fora",
+  },
+  {
+    id: 3,
+    placa: "GHI7J89",
+    tipo: "Carro",
+    status: "Dentro",
+  },
+  {
+    id: 4,
+    placa: "JKL2M34",
+    tipo: "Caminhão",
+    status: "Fora",
+  },
 ];
 
 let proximoId = 5;
@@ -295,32 +295,32 @@ const modal = document.getElementById("modal");
 const modalConteudo = document.getElementById("modal-conteudo");
 
 function abrirModalDinamico(conteudo) {
-    modalConteudo.innerHTML = conteudo;
-    modal.hidden = false;
+  modalConteudo.innerHTML = conteudo;
+  modal.hidden = false;
 }
 
 function fecharModalDinamico() {
-    modal.hidden = true;
-    modalConteudo.innerHTML = "";
+  modal.hidden = true;
+  modalConteudo.innerHTML = "";
 }
 
 function verificarPlaca(placa) {
-    return placa.length === 7;
+  return placa.length === 7;
 }
 
 function mostrarVeiculos() {
-    const pesquisa = busca.value.toUpperCase().trim();
+  const pesquisa = busca.value.toUpperCase().trim();
 
-    const encontrados = veiculos.filter(function (veiculo) {
-        return veiculo.placa.includes(pesquisa);
-    });
+  const encontrados = veiculos.filter(function (veiculo) {
+    return veiculo.placa.includes(pesquisa);
+  });
 
-    lista.innerHTML = "";
+  lista.innerHTML = "";
 
-    encontrados.forEach(function (veiculo) {
-        const linha = document.createElement("tr");
+  encontrados.forEach(function (veiculo) {
+    const linha = document.createElement("tr");
 
-        linha.innerHTML = `
+    linha.innerHTML = `
             <td class="placa-veiculo">${veiculo.placa}</td>
             <td>${veiculo.tipo}</td>
             <td>
@@ -336,25 +336,26 @@ function mostrarVeiculos() {
             </td>
         `;
 
-        linha.querySelector(".botao-editar").addEventListener("click", function () {
-            editarVeiculo(veiculo.id);
-        });
-
-        linha.querySelector(".botao-excluir").addEventListener("click", function () {
-            excluirVeiculo(veiculo.id);
-        });
-
-        lista.appendChild(linha);
+    linha.querySelector(".botao-editar").addEventListener("click", function () {
+      editarVeiculo(veiculo.id);
     });
 
-    vazio.style.display = encontrados.length === 0 ? "block" : "none";
+    linha
+      .querySelector(".botao-excluir")
+      .addEventListener("click", function () {
+        excluirVeiculo(veiculo.id);
+      });
 
-    textoPaginacao.textContent =
-        `Mostrando ${encontrados.length} de ${veiculos.length} veículos`;
+    lista.appendChild(linha);
+  });
+
+  vazio.style.display = encontrados.length === 0 ? "block" : "none";
+
+  textoPaginacao.textContent = `Mostrando ${encontrados.length} de ${veiculos.length} veículos`;
 }
 
 function cadastrarVeiculo() {
-    abrirModalDinamico(`
+  abrirModalDinamico(`
         <h2>Cadastrar</h2>
 
         <form id="formCadastroVeiculo">
@@ -389,61 +390,73 @@ function cadastrarVeiculo() {
         </form>
     `);
 
-    document.getElementById("cancelarModal").addEventListener("click", fecharModalDinamico);
+  document
+    .getElementById("cancelarModal")
+    .addEventListener("click", fecharModalDinamico);
 
-    document.getElementById("formCadastroVeiculo").addEventListener("submit", function (event) {
-        event.preventDefault();
+  document
+    .getElementById("formCadastroVeiculo")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
 
-        const placa = document.getElementById("novaPlaca").value.toUpperCase().trim();
-        const tipo = document.getElementById("novoTipo").value.trim();
-        const status = document.getElementById("novoStatus").value.trim().toLowerCase();
+      const placa = document
+        .getElementById("novaPlaca")
+        .value.toUpperCase()
+        .trim();
+      const tipo = document.getElementById("novoTipo").value.trim();
+      const status = document
+        .getElementById("novoStatus")
+        .value.trim()
+        .toLowerCase();
 
-        if (!verificarPlaca(placa)) {
-            alert("A placa deve ter exatamente 7 caracteres!");
-            return;
-        }
+      if (!verificarPlaca(placa)) {
+        alert("A placa deve ter exatamente 7 caracteres!");
+        return;
+      }
 
-        if (veiculos.some(function (veiculo) {
-            return veiculo.placa === placa;
-        })) {
-            alert("Essa placa já está cadastrada!");
-            return;
-        }
+      if (
+        veiculos.some(function (veiculo) {
+          return veiculo.placa === placa;
+        })
+      ) {
+        alert("Essa placa já está cadastrada!");
+        return;
+      }
 
-        if (tipo === "") {
-            alert("Digite o tipo do veículo!");
-            return;
-        }
+      if (tipo === "") {
+        alert("Digite o tipo do veículo!");
+        return;
+      }
 
-        if (status !== "dentro" && status !== "fora") {
-            alert("Status inválido! Digite Dentro ou Fora.");
-            return;
-        }
+      if (status !== "dentro" && status !== "fora") {
+        alert("Status inválido! Digite Dentro ou Fora.");
+        return;
+      }
 
-        veiculos.push({
-            id: proximoId++,
-            horario: new Date().toLocaleTimeString("pt-BR", {
-                hour: "2-digit",
-                minute: "2-digit"
-            }),
-            placa: placa,
-            tipo: tipo,
-            status: status === "dentro" ? "Dentro" : "Fora"
-        });
+      veiculos.push({
+        id: proximoId++,
+        horario: new Date().toLocaleTimeString("pt-BR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        placa: placa,
+        tipo: tipo,
+        status: status === "dentro" ? "Dentro" : "Fora",
+      });
 
-        mostrarVeiculos();
-        fecharModalDinamico();
+      mostrarVeiculos();
+      fecharModalDinamico();
     });
 }
 
 function editarVeiculo(id) {
-    const veiculo = veiculos.find(function (item) {
-        return item.id === id;
-    });
+  const veiculo = veiculos.find(function (item) {
+    return item.id === id;
+  });
 
-    if (!veiculo) return;
+  if (!veiculo) return;
 
-    abrirModalDinamico(`
+  abrirModalDinamico(`
         <h2>${veiculo.placa}</h2>
 
         <form id="formEditarVeiculo">
@@ -481,54 +494,66 @@ function editarVeiculo(id) {
         </form>
     `);
 
-    document.getElementById("cancelarModal").addEventListener("click", fecharModalDinamico);
+  document
+    .getElementById("cancelarModal")
+    .addEventListener("click", fecharModalDinamico);
 
-    document.getElementById("formEditarVeiculo").addEventListener("submit", function (event) {
-        event.preventDefault();
+  document
+    .getElementById("formEditarVeiculo")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
 
-        const placa = document.getElementById("novaPlaca").value.toUpperCase().trim();
-        const tipo = document.getElementById("novoTipo").value.trim();
-        const status = document.getElementById("novoStatus").value.trim().toLowerCase();
+      const placa = document
+        .getElementById("novaPlaca")
+        .value.toUpperCase()
+        .trim();
+      const tipo = document.getElementById("novoTipo").value.trim();
+      const status = document
+        .getElementById("novoStatus")
+        .value.trim()
+        .toLowerCase();
 
-        if (!verificarPlaca(placa)) {
-            alert("A placa deve ter exatamente 7 caracteres!");
-            return;
-        }
+      if (!verificarPlaca(placa)) {
+        alert("A placa deve ter exatamente 7 caracteres!");
+        return;
+      }
 
-        if (veiculos.some(function (item) {
-            return item.id !== id && item.placa === placa;
-        })) {
-            alert("Essa placa já está cadastrada!");
-            return;
-        }
+      if (
+        veiculos.some(function (item) {
+          return item.id !== id && item.placa === placa;
+        })
+      ) {
+        alert("Essa placa já está cadastrada!");
+        return;
+      }
 
-        if (tipo === "") {
-            alert("Digite o tipo do veículo!");
-            return;
-        }
+      if (tipo === "") {
+        alert("Digite o tipo do veículo!");
+        return;
+      }
 
-        if (status !== "dentro" && status !== "fora") {
-            alert("Status inválido! Digite Dentro ou Fora.");
-            return;
-        }
+      if (status !== "dentro" && status !== "fora") {
+        alert("Status inválido! Digite Dentro ou Fora.");
+        return;
+      }
 
-        veiculo.placa = placa;
-        veiculo.tipo = tipo;
-        veiculo.status = status === "dentro" ? "Dentro" : "Fora";
+      veiculo.placa = placa;
+      veiculo.tipo = tipo;
+      veiculo.status = status === "dentro" ? "Dentro" : "Fora";
 
-        mostrarVeiculos();
-        fecharModalDinamico();
+      mostrarVeiculos();
+      fecharModalDinamico();
     });
 }
 
 function excluirVeiculo(id) {
-    const veiculo = veiculos.find(function (item) {
-        return item.id === id;
-    });
+  const veiculo = veiculos.find(function (item) {
+    return item.id === id;
+  });
 
-    if (!veiculo) return;
+  if (!veiculo) return;
 
-    abrirModalDinamico(`
+  abrirModalDinamico(`
         <h2>Excluir</h2>
 
         <p class="texto-modal">
@@ -541,34 +566,38 @@ function excluirVeiculo(id) {
         </div>
     `);
 
-    document.getElementById("cancelarModal").addEventListener("click", fecharModalDinamico);
+  document
+    .getElementById("cancelarModal")
+    .addEventListener("click", fecharModalDinamico);
 
-    document.getElementById("confirmarExcluir").addEventListener("click", function () {
-        const indice = veiculos.findIndex(function (item) {
-            return item.id === id;
-        });
+  document
+    .getElementById("confirmarExcluir")
+    .addEventListener("click", function () {
+      const indice = veiculos.findIndex(function (item) {
+        return item.id === id;
+      });
 
-        if (indice === -1) return;
+      if (indice === -1) return;
 
-        veiculos.splice(indice, 1);
+      veiculos.splice(indice, 1);
 
-        mostrarVeiculos();
-        fecharModalDinamico();
+      mostrarVeiculos();
+      fecharModalDinamico();
     });
 }
 
 // Fechar modal clicando fora
 modal.addEventListener("click", function (event) {
-    if (event.target === modal) {
-        fecharModalDinamico();
-    }
+  if (event.target === modal) {
+    fecharModalDinamico();
+  }
 });
 
 busca.addEventListener("input", mostrarVeiculos);
 
 botaoCadastrar.addEventListener("click", function (event) {
-    event.preventDefault();
-    cadastrarVeiculo();
+  event.preventDefault();
+  cadastrarVeiculo();
 });
 
 mostrarVeiculos();
@@ -592,104 +621,354 @@ let telefoneOriginal = campoTelefone.value;
 let localizacaoOriginal = campoLocalizacao.value;
 
 function bloquearCampos() {
-    campoNome.readOnly = true;
-    campoSobrenome.readOnly = true;
-    campoEmail.readOnly = true;
-    campoTelefone.readOnly = true;
-    campoLocalizacao.disabled = true;
+  campoNome.readOnly = true;
+  campoSobrenome.readOnly = true;
+  campoEmail.readOnly = true;
+  campoTelefone.readOnly = true;
+  campoLocalizacao.disabled = true;
 
-    form.classList.remove("editando");
+  form.classList.remove("editando");
 
-    botaoSalvar.disabled = true;
-    botaoEditar.textContent = "Editar";
+  botaoSalvar.disabled = true;
+  botaoEditar.textContent = "Editar";
 }
 
 function liberarCampos() {
-    campoNome.readOnly = false;
-    campoSobrenome.readOnly = false;
-    campoEmail.readOnly = false;
-    campoTelefone.readOnly = false;
-    campoLocalizacao.disabled = false;
+  campoNome.readOnly = false;
+  campoSobrenome.readOnly = false;
+  campoEmail.readOnly = false;
+  campoTelefone.readOnly = false;
+  campoLocalizacao.disabled = false;
 
-    form.classList.add("editando");
+  form.classList.add("editando");
 
-    botaoSalvar.disabled = false;
-    botaoEditar.textContent = "Cancelar";
+  botaoSalvar.disabled = false;
+  botaoEditar.textContent = "Cancelar";
 }
 
 function guardarOriginais() {
-    nomeOriginal = campoNome.value;
-    sobrenomeOriginal = campoSobrenome.value;
-    emailOriginal = campoEmail.value;
-    telefoneOriginal = campoTelefone.value;
-    localizacaoOriginal = campoLocalizacao.value;
+  nomeOriginal = campoNome.value;
+  sobrenomeOriginal = campoSobrenome.value;
+  emailOriginal = campoEmail.value;
+  telefoneOriginal = campoTelefone.value;
+  localizacaoOriginal = campoLocalizacao.value;
 }
 
 function voltarOriginais() {
-    campoNome.value = nomeOriginal;
-    campoSobrenome.value = sobrenomeOriginal;
-    campoEmail.value = emailOriginal;
-    campoTelefone.value = telefoneOriginal;
-    campoLocalizacao.value = localizacaoOriginal;
+  campoNome.value = nomeOriginal;
+  campoSobrenome.value = sobrenomeOriginal;
+  campoEmail.value = emailOriginal;
+  campoTelefone.value = telefoneOriginal;
+  campoLocalizacao.value = localizacaoOriginal;
 }
 
 function salvarNoNavegador() {
-    const dados = {
-        nome: campoNome.value,
-        sobrenome: campoSobrenome.value,
-        email: campoEmail.value,
-        telefone: campoTelefone.value,
-        localizacao: campoLocalizacao.value
-    };
+  const dados = {
+    nome: campoNome.value,
+    sobrenome: campoSobrenome.value,
+    email: campoEmail.value,
+    telefone: campoTelefone.value,
+    localizacao: campoLocalizacao.value,
+  };
 
-    localStorage.setItem("autocontrol_usuario", JSON.stringify(dados));
+  localStorage.setItem("autocontrol_usuario", JSON.stringify(dados));
 }
 
 function carregarDoNavegador() {
-    const texto = localStorage.getItem("autocontrol_usuario");
+  const texto = localStorage.getItem("autocontrol_usuario");
 
-    if (texto === null) return;
+  if (texto === null) return;
 
-    const dados = JSON.parse(texto);
+  const dados = JSON.parse(texto);
 
-    campoNome.value = dados.nome;
-    campoSobrenome.value = dados.sobrenome;
-    campoEmail.value = dados.email;
-    campoTelefone.value = dados.telefone;
-    campoLocalizacao.value = dados.localizacao;
+  campoNome.value = dados.nome;
+  campoSobrenome.value = dados.sobrenome;
+  campoEmail.value = dados.email;
+  campoTelefone.value = dados.telefone;
+  campoLocalizacao.value = dados.localizacao;
 }
 
 botaoEditar.addEventListener("click", function () {
-    if (botaoEditar.textContent === "Cancelar") {
-        voltarOriginais();
-        bloquearCampos();
-    } else {
-        liberarCampos();
-        campoNome.focus();
-    }
+  if (botaoEditar.textContent === "Cancelar") {
+    voltarOriginais();
+    bloquearCampos();
+  } else {
+    liberarCampos();
+    campoNome.focus();
+  }
 });
 
 form.addEventListener("submit", function (evento) {
-    evento.preventDefault();
+  evento.preventDefault();
 
-    if (campoNome.value.trim() === "") {
-        alert("Digite o nome.");
-        return;
-    }
+  if (campoNome.value.trim() === "") {
+    alert("Digite o nome.");
+    return;
+  }
 
-    if (!campoEmail.value.includes("@")) {
-        alert("Digite um e-mail válido.");
-        return;
-    }
+  if (!campoEmail.value.includes("@")) {
+    alert("Digite um e-mail válido.");
+    return;
+  }
 
-    guardarOriginais();
-    salvarNoNavegador();
-    bloquearCampos();
+  guardarOriginais();
+  salvarNoNavegador();
+  bloquearCampos();
 });
 botaoSair.addEventListener("click", function () {
-    document.getElementById("sair_button").click();
+  document.getElementById("sair_button").click();
 });
 
 carregarDoNavegador();
 guardarOriginais();
 bloquearCampos();
+
+//  Outros gráficos
+
+const botaoFiltrar = document.getElementById("filtrarRelatorio");
+
+botaoFiltrar.addEventListener("click", function () {
+  let dataInicio = document.getElementById("dataInicio").value;
+  let dataFim = document.getElementById("dataFim").value;
+
+  let linhas = document.querySelectorAll("#listaRelatorios .linha-relatorio");
+
+  if (dataInicio > dataFim) {
+    alert("A data inicial não pode ser maior que a data final!");
+    return;
+  }
+
+  linhas.forEach(function (linha) {
+    let data = linha.getAttribute("data-data");
+
+    if (data >= dataInicio && data <= dataFim) {
+      linha.style.display = "grid";
+    } else {
+      linha.style.display = "none";
+    }
+  });
+});
+
+
+function editarRelatorio(botao) {
+
+    let linha = botao.closest(".linha-relatorio");
+
+    let horario = linha.children[0].textContent;
+    let placa = linha.children[1].textContent;
+    let responsavel = linha.children[2].textContent;
+
+    abrirModalDinamico(`
+        <h2>Editar relatório</h2>
+
+        <form id="formEditarRelatorio">
+
+            <label>Horário</label>
+            <input 
+                type="time" 
+                id="editarHorario" 
+                value="${horario}" 
+                required
+            >
+
+            <label>Placa</label>
+            <input 
+                type="text" 
+                id="editarPlaca" 
+                value="${placa}" 
+                maxlength="7"
+                required
+            >
+
+            <label>Responsável</label>
+            <input 
+                type="text" 
+                id="editarResponsavel" 
+                value="${responsavel === "-" ? "" : responsavel}"
+                placeholder="Nome do responsável"
+            >
+
+            <div class="modal-botoes">
+                <button type="button" id="cancelarModal">Cancelar</button>
+                <button type="submit">Salvar</button>
+            </div>
+
+        </form>
+    `);
+
+    document.getElementById("cancelarModal").addEventListener("click", function() {
+        fecharModalDinamico();
+    });
+
+    document.getElementById("formEditarRelatorio").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        let novoHorario = document.getElementById("editarHorario").value;
+        let novaPlaca = document.getElementById("editarPlaca").value.toUpperCase().trim();
+        let novoResponsavel = document.getElementById("editarResponsavel").value.trim();
+
+        if (novaPlaca.length !== 7) {
+            alert("A placa deve ter 7 caracteres!");
+            return;
+        }
+
+        linha.children[0].textContent = novoHorario;
+        linha.children[1].textContent = novaPlaca;
+        linha.children[2].textContent = novoResponsavel === "" ? "-" : novoResponsavel;
+
+        fecharModalDinamico();
+
+    });
+
+}
+
+function excluirRelatorio(botao) {
+
+    let linha = botao.closest(".linha-relatorio");
+
+    let placa = linha.children[1].textContent;
+
+    abrirModalDinamico(`
+        <h2>Excluir relatório</h2>
+
+        <p class="texto-modal">
+            Deseja realmente excluir o registro do veículo ${placa}?
+        </p>
+
+        <div class="modal-botoes">
+            <button type="button" id="cancelarModal">Cancelar</button>
+            <button type="button" id="confirmarExcluir">Excluir</button>
+        </div>
+    `);
+
+    document.getElementById("cancelarModal").addEventListener("click", function() {
+        fecharModalDinamico();
+    });
+
+    document.getElementById("confirmarExcluir").addEventListener("click", function() {
+
+        linha.remove();
+
+        fecharModalDinamico();
+
+    });
+
+}
+
+// Grafico pizza dnv
+
+const ctxTotal = document.getElementById("graficoTotal");
+
+const graficoTotal = new Chart(ctxTotal, {
+  type: "doughnut",
+
+  data: {
+    labels: ["Dentro", "Fora", "Outros"],
+
+    datasets: [
+      {
+        data: [850, 350, 48],
+
+        backgroundColor: ["#009f9d", "#65b95c", "#ffbd2e"],
+
+        borderWidth: 0,
+        hoverOffset: 4,
+      },
+    ],
+  },
+
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+
+    cutout: "68%",
+
+    plugins: {
+      legend: {
+        display: false,
+      },
+
+      tooltip: {
+        enabled: true,
+      },
+    },
+  },
+});
+// GRÁFICO MISTO
+
+const ctx = document.getElementById("graficoMovimentacao");
+
+const mixedChart = new Chart(ctx, {
+  data: {
+    datasets: [
+      {
+        type: "bar",
+        label: "Entradas",
+        data: [10, 20, 30, 40],
+
+        backgroundColor: "#009f9d",
+        borderRadius: 4,
+      },
+      {
+        type: "line",
+        label: "Saídas",
+        data: [50, 50, 50, 50],
+
+        borderColor: "#ffbd2e",
+        backgroundColor: "#ffbd2e",
+        borderWidth: 2,
+        pointRadius: 3,
+        tension: 0.3,
+      },
+    ],
+
+    labels: ["Janeiro", "Fevereiro", "Março", "Abril"],
+  },
+
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+
+    plugins: {
+      legend: {
+        labels: {
+          color: "#c6ccda",
+          boxWidth: 10,
+          font: {
+            size: 10,
+          },
+        },
+      },
+    },
+
+    scales: {
+      x: {
+        ticks: {
+          color: "#8b98ad",
+          font: {
+            size: 9,
+          },
+        },
+
+        grid: {
+          display: false,
+        },
+      },
+
+      y: {
+        beginAtZero: true,
+
+        ticks: {
+          color: "#8b98ad",
+          font: {
+            size: 9,
+          },
+        },
+        grid: {
+          color: "#1b2635",
+        },
+      },
+    },
+  },
+});
